@@ -69,7 +69,7 @@
     </div>
     <div class="sectie-inner">
         <div class="content-tekst">
-            <h1>Welkom bij AARJO Car BV</h1>
+            <h1>Welkom bij AARJO Car BV PHP</h1>
             <p>
                 Welkom op de website AARJO Car BV. Op deze website kunt u informatie vinden over auto's. U kunt uw
                 kennis over auto's hier uitbreiden. Deze website is bedoeld voor mensen die geïnteresseerd zijn in
