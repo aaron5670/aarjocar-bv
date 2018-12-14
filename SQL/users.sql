@@ -10,7 +10,7 @@ go
 CREATE TABLE users (
 	id			int				identity,
 	username	varchar(25)		NOT NULL,
-	password	varchar(50)		NOT NULL,
+	password	text			NOT NULL,
 )
 
 ALTER TABLE users
