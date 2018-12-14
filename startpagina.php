@@ -11,7 +11,7 @@
                 Ook bevindt zich op deze website een forum. Hier hebben bezoekers de mogelijkheid om met elkaar te
                 discussieren over onderwerpen die betrekken hebben op auto's. Voordat je op dit forum kunt moet een
                 bezoeker zich registrenen en/of inloggen. Dit kunt u doen door rechtsboven op inloggen te
-                klikken. Of door <a href="inloggen.php">hier</a> te klikken.
+                klikken. Of door <a href="<?= $url;?>inloggen.php">hier</a> te klikken.
                 <br/>
                 <br/>
                 Op de video's pagina kunt u een tiental video's bekijken over auto's, dit zullen informatieve video's
