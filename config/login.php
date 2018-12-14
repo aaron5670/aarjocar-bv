@@ -39,9 +39,6 @@ if(isset($_POST['login'])){
 
 	print_r($user);
 
-	//Hash the password as we do NOT want to store our passwords in plain text.
-	$passwordHash = password_hash($user['password'], PASSWORD_BCRYPT, array("cost" => 12));
-
 	//If $row is FALSE.
 	if($user === false){
 		//Could not find a user with that username!
