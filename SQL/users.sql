@@ -1,10 +1,11 @@
+USE master
+DROP DATABASE aarjocar
+
 CREATE DATABASE aarjocar
 GO
 
 USE aarjocar
 go
-
-DROP TABLE users
 
 CREATE TABLE users (
 	id			int				identity,
