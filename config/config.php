@@ -1,5 +1,5 @@
 <?php
 
-$url = 'http://jorisprojecten.test/aarjocarbvphp/';
+$url = 'http://aarjocar-bv.test/';
 
 ?>
