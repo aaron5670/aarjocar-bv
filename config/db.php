@@ -1,8 +1,5 @@
 <div class="sectie-main">
     <div class="sectie-inner">
-        <div class="box-1">
-			<?php include_once 'connection.php' ?>
-        </div>
         <div class="box-2">
 			<?php
 			// select all users
@@ -11,7 +8,7 @@
 			$stmt = $db->query( "SELECT * FROM users" );
 
 			while ( $row = $stmt->fetch() ) {
-				echo $row['userID'] . "\n" . $row['username'] . "\n" . $row['password'] . "\n" . "<br />\n";
+				echo $row['id'] . "\n" . $row['username'] . "\n" . $row['password'] . "\n" . "<br />\n";
 			}
 			?>
         </div>
