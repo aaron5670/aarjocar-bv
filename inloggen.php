@@ -1,8 +1,7 @@
 <?php
-/**
- * Start de session.
- */
-session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('location: index.php');
+}
 
 //database connectie
 require_once 'config/connect.php';
@@ -47,10 +46,10 @@ if ( isset( $_POST['login'] ) ) {
 
 			//Provide the user with a login session.
 			$_SESSION['user_id']   = $user['id'];
-			$_SESSION['logged_in'] = time();
+			$_SESSION['username'] = $user['username'];
 
 			//Redirect to our protected page, which we called home.php
-			header( 'Location: index.php' );
+			header( 'Location: beheerpaneel' );
 			exit;
 
 		} else {

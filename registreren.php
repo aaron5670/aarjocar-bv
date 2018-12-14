@@ -1,8 +1,7 @@
 <?php
-/**
- * Start de session.
- */
-session_start();
+if (!isset($_SESSION['user_id'])) {
+	header('location: index.php');
+}
 
 //database connectie
 require_once 'config/connect.php';
