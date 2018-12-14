@@ -1,9 +1,9 @@
 <?php
 $serverName = "localhost"; //Hostname/IP,...
 $connectionOptions = array(
-    "Database" => "FLETNIX",
+    "Database" => "aarjocar",
     "Uid" => "sa",
-    "PWD" => "joris123"
+    "PWD" => "password1"
 );
 
 //Establishes the connection
@@ -14,4 +14,3 @@ if ($conn === false) {
 } else {
     echo "Connected!";
 }
-?>
