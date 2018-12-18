@@ -2,11 +2,6 @@
 <div id="menulinks">
     <ul id="cms_menu">
         <li>
-            <a href="<?= $url; ?>beheerpaneel/index.php">
-                Dashboard
-            </a>
-        </li>
-        <li>
             <a href="<?= $url; ?>beheerpaneel/home.php">
                 Home
             </a>

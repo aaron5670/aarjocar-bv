@@ -59,7 +59,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'submenu_paginas') == true) {
                 </a>
             </li>
             <li>
-                <a href="<?= $url; ?>Overons.php">
+                <a href="<?= $url; ?>overons.php">
                     Over ons
                 </a>
             </li>

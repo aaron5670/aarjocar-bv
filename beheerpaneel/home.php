@@ -19,11 +19,12 @@ $titel = !empty($_POST['titel']) ? trim($_POST['titel']) : null;
 $tekst = !empty($_POST['tekst']) ? trim($_POST['tekst']) : null;
 
 // insert into page_content query
-$pdo->query("UPDATE page_content SET titel = '$titel', tekst = '$tekst' WHERE pageID = 3");
+$pdo->query("UPDATE page_content SET titel = '$titel', tekst = '$tekst' WHERE pageId = 1");
 
 
-$row = $pdo->query("SELECT titel FROM page_content WHERE pageID = 3");
+$row = $pdo->query("SELECT titel FROM page_content WHERE pageId = 1");
 $value = ($row->fetch(PDO::FETCH_ASSOC));
+
 
 ?>
 
@@ -33,7 +34,7 @@ $value = ($row->fetch(PDO::FETCH_ASSOC));
             <label for="titel">Titel</label>
             <input type="text" id="titel" name="titel" value="<?= $value['titel']; ?>"><br>
             <label for="tekst">Tekst</label>
-            <input type="text" id="tekst" name="tekst"><br>
+            <input type="text" id="tekst" name="tekst" value="test"><br>
             <input type="submit" name="register" value="Register">
         </form>
     </div>

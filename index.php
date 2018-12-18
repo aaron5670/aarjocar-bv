@@ -16,7 +16,7 @@
             <?php
             require_once 'config/connect.php';
 
-            $row = $pdo->query("SELECT titel FROM page_content WHERE pageID = 3");
+            $row = $pdo->query("SELECT titel FROM page_content WHERE pageId = 1");
             $test = ($row->fetch(PDO::FETCH_ASSOC));
             ?>
 
