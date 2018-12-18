@@ -5,6 +5,11 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	header( 'location: ' . $url );
 }
 
+if ( $_GET['succes'] ) {
+	$message = 'U bent succesvol geregistreerd!';
+	print_r($_GET);
+}
+
 //database connectie
 require_once 'config/connect.php';
 

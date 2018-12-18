@@ -1,15 +1,14 @@
 <?php
 include 'includes/header.php';
 
-if (isset($_SESSION['user_id'])) {
-	header('location: ' . $url);
+if ( isset( $_SESSION['user_id'] ) ) {
+	header( 'location: ' . $url );
 }
 
 //database connectie
 require_once 'config/connect.php';
 
 if ( isset( $_POST['register'] ) ) {
-
 	//Haalt de gegevens op van het formulier
 	$username = ! empty( $_POST['username'] ) ? trim( $_POST['username'] ) : null;
 	$pass     = ! empty( $_POST['password'] ) ? trim( $_POST['password'] ) : null;
@@ -27,23 +26,22 @@ if ( isset( $_POST['register'] ) ) {
 	//Fetch de rij.
 	$row = $stmt->fetch( PDO::FETCH_ASSOC );
 
-
-	//Controleert of de gebruikersnaam al bestaat. Bestaat die, killt die het script.
+	//Controleert of de gebruikersnaam al bestaat.
 	if ( $row['num'] > 0 ) {
-		die( 'Gebruikersnaam bestaat al.' );
-	}
-
-	//Hash het wachtwoord (veiligheid)
-	$passwordHash = password_hash( $pass, PASSWORD_BCRYPT, array( "cost" => 12 ) );
-
-	//Insert de gegevens in de database
-	$pdo->query( "INSERT INTO users( username, password ) values( '$username', '$passwordHash' )" );
-
-	//als het gelukt is
-	if ( $stmt ) {
-		$message = 'U bent succesvol geregistreerd!';
+		$message = 'Gebruikersnaam bestaat al.';
 	} else {
-		$message = 'Er is iets niet goed gegaan...';
+		//Hash het wachtwoord (veiligheid)
+		$passwordHash = password_hash( $pass, PASSWORD_BCRYPT, array( "cost" => 12 ) );
+
+		//Insert de gegevens in de database
+		$pdo->query( "INSERT INTO users( username, password ) values( '$username', '$passwordHash' )" );
+
+		//als het gelukt is
+		if ( $stmt ) {
+		    header('Location: ' . $url . 'inloggen.php?succes=true');
+		} else {
+			$message = 'Er is iets niet goed gegaan...';
+		}
 	}
 }
 ?>
@@ -51,11 +49,11 @@ if ( isset( $_POST['register'] ) ) {
         <div class="sectie-inner">
             <form action="registreren.php" method="post">
                 <div class="inlog-formulier">
-	                <?php
-	                if ( isset( $message ) ) {
-		                echo '<h1>' . $message . '</h1>';
-	                }
-	                ?>
+					<?php
+					if ( isset( $message ) ) {
+						echo '<h1>' . $message . '</h1>';
+					}
+					?>
                     <label for="username"><b>Gebruikersnaam</b></label>
                     <input type="text" placeholder="Vul hier uw Gebruikersnaam in" name="username" id="username"
                            autofocus required>
