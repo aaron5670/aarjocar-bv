@@ -1,12 +1,12 @@
 <?php
-if (strpos($_SERVER['REQUEST_URI'], 'submenu_paginas') == true) {
-    include '../config/config.php';
-} elseif (strpos($_SERVER['REQUEST_URI'], 'forum/') == true) {
-    include '../config/config.php';
-} elseif (strpos($_SERVER['REQUEST_URI'], 'forum/discussies/') == true) {
-    include 'config/config.php';
+if ( strpos( $_SERVER['REQUEST_URI'], 'submenu_paginas' ) == true ) {
+	include '../config/config.php';
+} elseif ( strpos( $_SERVER['REQUEST_URI'], 'forum/' ) == true ) {
+	include '../config/config.php';
+} elseif ( strpos( $_SERVER['REQUEST_URI'], 'forum/discussies/' ) == true ) {
+	include 'config/config.php';
 } else {
-    include  'config/config.php';
+	include 'config/config.php';
 }
 ?>
 <head>
@@ -24,11 +24,25 @@ if (strpos($_SERVER['REQUEST_URI'], 'submenu_paginas') == true) {
                 <img src="<?= $url; ?>images/logo.png" alt>
             </a>
         </div>
-        <div class="inloggen">
-            <a href="<?= $url; ?>inloggen.php">
-                Inloggen
-            </a>
-        </div>
+		<?php
+		if ( isset( $_SESSION['user_id'] ) ) {
+			?>
+            <div class="inloggen">
+                <a href="<?= $url; ?>logout.php">
+                    Uitloggen
+                </a>
+            </div>
+			<?php
+		} else {
+			?>
+            <div class="inloggen">
+                <a href="<?= $url; ?>inloggen.php">
+                    Inloggen
+                </a>
+            </div>
+			<?php
+		}
+		?>
     </div>
     <div class="sectie-inner">
         <ul id="nav">

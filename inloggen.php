@@ -1,6 +1,8 @@
 <?php
-if (!isset($_SESSION['user_id'])) {
-    header('location: index.php');
+include 'includes/header.php';
+
+if ( isset( $_SESSION['user_id'] ) ) {
+	header( 'location: ' . $url );
 }
 
 //database connectie
@@ -33,7 +35,7 @@ if ( isset( $_POST['login'] ) ) {
 	if ( $user === false ) {
 		//Could not find a user with that username!
 		//PS: You might want to handle this error in a more user-friendly manner!
-		die( 'Gebruikersnaam niet gevonden' );
+		$message = 'Gebruikersnaam niet gevonden';
 	} else {
 		//User account found. Check to see if the given password matches the
 		//password hash that we stored in our users table.
@@ -45,7 +47,7 @@ if ( isset( $_POST['login'] ) ) {
 		if ( $validPassword ) {
 
 			//Provide the user with a login session.
-			$_SESSION['user_id']   = $user['id'];
+			$_SESSION['user_id']  = $user['id'];
 			$_SESSION['username'] = $user['username'];
 
 			//Redirect to our protected page, which we called home.php
@@ -54,30 +56,36 @@ if ( isset( $_POST['login'] ) ) {
 
 		} else {
 			//$validPassword was FALSE. Passwords do not match.
-			die( 'Wachtwoord is incorrect' );
+			$message = 'Wachtwoord is incorrect';
 		}
 	}
 }
 ?>
-<?php include 'includes/header.php' ?>
-<main class="sectie-main">
-    <div class="sectie-inner">
-        <form action="inloggen.php" method="post">
-            <div class="inlog-formulier">
-                <label for="username"><b>Gebruikersnaam</b></label>
-                <input type="text" placeholder="Vul hier uw Gebruikersnaam in" id="username" name="username" required>
+    <main class="sectie-main">
+        <div class="sectie-inner">
+            <form action="inloggen.php" method="post">
+                <div class="inlog-formulier">
+					<?php
+					if ( isset( $message ) ) {
+						echo '<h1>' . $message . '</h1>';
+					}
+					?>
+                    <label for="username"><b>Gebruikersnaam</b></label>
+                    <input type="text" placeholder="Vul hier uw Gebruikersnaam in" id="username" name="username"
+                           required>
 
-                <label for="password"><b>Password</b></label>
-                <input type="password" placeholder="Vul hier uw wachtwoord in" id="password" name="password" required>
-                <label>
-                    Bent u nog niet geregisteerd? Klik dan <a href="registreren.php">hier</a>!
-                </label>
-                <div class="button-container">
-                    <input class="inlogknop" type="submit" name="login" value="Login">
+                    <label for="password"><b>Password</b></label>
+                    <input type="password" placeholder="Vul hier uw wachtwoord in" id="password" name="password"
+                           required>
+                    <label>
+                        Bent u nog niet geregisteerd? Klik dan <a href="registreren.php">hier</a>!
+                    </label>
+                    <div class="button-container">
+                        <input class="inlogknop" type="submit" name="login" value="Login">
+                    </div>
                 </div>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
 
-</main>
+    </main>
 <?php include 'includes/footer.php' ?>

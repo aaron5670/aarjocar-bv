@@ -1,6 +1,8 @@
 <?php
-if (!isset($_SESSION['user_id'])) {
-	header('location: index.php');
+include 'includes/header.php';
+
+if (isset($_SESSION['user_id'])) {
+	header('location: ' . $url);
 }
 
 //database connectie
@@ -45,7 +47,6 @@ if ( isset( $_POST['register'] ) ) {
 	}
 }
 ?>
-<?php include 'includes/header.php' ?>
     <main class="sectie-main">
         <div class="sectie-inner">
             <form action="registreren.php" method="post">
