@@ -25,33 +25,23 @@ if (isset($_POST['submit'])) {
                                             omschrijving = '$omschrijving', kenmerk = '$kenmerk'");
 
 }
-
-$row = $pdo->query("SELECT iframe_url FROM page_iframe");
-$valueiframeurl = ($row->fetch());
-
-$row = $pdo->query("SELECT kenmerk FROM page_iframe");
-$valuetitel = ($row->fetch());
-
-$row = $pdo->query("SELECT titel FROM page_iframe");
-$valueomschrijving = ($row->fetch());
-
-$row = $pdo->query("SELECT omschrijving FROM page_iframe");
-$valuekenmerk = ($row->fetch());
+$row = $pdo->query("SELECT * FROM page_iframe");
+$value = ($row->fetch());
 
 ?>
 <div class="formulier-beheerpaneel">
     <form action="videos.php" method="post">
         <label for="iframe_url">iframe url</label>
-        <input type="text" id="iframe_url" name="iframe_url" value="<?= $valueiframeurl['iframe_url']; ?>"><br>
+        <input type="text" id="iframe_url" name="iframe_url" value="<?= $value['iframe_url']; ?>"><br>
 
         <label for="titel">Titel</label>
-        <input type="text" id="titel" name="titel" value="<?= $valuetitel['titel']; ?>"><br>
+        <input type="text" id="titel" name="titel" value="<?= $value['titel']; ?>"><br>
 
         <label for="omschrijving">omschrijving</label>
-        <textarea id="omschrijving" name="omschrijving"><?= $valueomschrijving['omschrijving']; ?></textarea><br>
+        <textarea id="omschrijving" name="omschrijving"><?= $value['omschrijving']; ?></textarea><br>
 
         <label for="kenmerk">kenmerk</label>
-        <input type="text" id="kenmerk" name="kenmerk" value="<?= $valuekenmerk['kenmerk']; ?>"><br>
+        <input type="text" id="kenmerk" name="kenmerk" value="<?= $value['kenmerk']; ?>"><br>
 
         <input type="submit" name="submit" value="Updaten">
     </form>

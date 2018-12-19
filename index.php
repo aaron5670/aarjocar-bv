@@ -16,16 +16,14 @@
             <?php
             require_once 'config/connect.php';
 
-            $row = $pdo->query("SELECT titel FROM page_content WHERE pageId = 1");
-            $valuetitel = ($row->fetch(PDO::FETCH_ASSOC));
+            $row = $pdo->query("SELECT * FROM page_content WHERE pageId = 1");
+            $value = ($row->fetch());
 
-            $row = $pdo->query("SELECT tekst FROM page_content WHERE pageId = 1");
-            $valuetekst = ($row->fetch(PDO::FETCH_ASSOC));
             ?>
 
-            <h1><?= $valuetitel['titel']; ?></h1>
+            <h1><?= $value['titel']; ?></h1>
             <p>
-                <?= base64_decode($valuetekst['tekst']); ?>
+                <?= base64_decode($value['tekst']); ?>
             </p>
         </div>
         <div class="content-forum-items">
@@ -60,20 +58,19 @@
     </div>
     <div class="sectie-inner">
         <div class="video-home-container">
-
-
-
-            <iframe class="video-home" height="315"
-                    src="https://www.youtube-nocookie.com/embed/Cw_zy60o8j0?controls=0"
-                    allowfullscreen></iframe>
-
-            <iframe class="video-home" height="315"
-                    src="https://www.youtube-nocookie.com/embed/DrUVMdkb4_k?controls=0"
-                    allowfullscreen></iframe>
-
-            <iframe class="video-home" height="315"
-                    src="https://www.youtube-nocookie.com/embed/lRzIWRLWZgM?controls=0"
-                    allowfullscreen></iframe>
+            <?php
+            $teller = 0;
+            $row = $pdo->query("SELECT * FROM page_iframe");
+            while ($value = ($row->fetch())) {
+                if ($teller == 3) {
+                    break;
+                }
+                ?>
+                <iframe class="video-home" height="315"
+                        src="<?= $value['iframe_url']; ?>"
+                        allowfullscreen></iframe>
+                <?php $teller++;
+            } ?>
         </div>
     </div>
 </main>
