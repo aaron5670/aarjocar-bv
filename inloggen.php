@@ -52,6 +52,7 @@ if ( isset( $_POST['login'] ) ) {
 
 			//Provide the user with a login session.
 			$_SESSION['user_id']   = $user['id'];
+			$_SESSION['user_role'] = $user['user_role'];
 			$_SESSION['username']  = $user['username'];
 			$_SESSION['firstname'] = $user['firstname'];
 			$_SESSION['lastname']  = $user['lastname'];

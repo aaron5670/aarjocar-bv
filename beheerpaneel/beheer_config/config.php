@@ -1,7 +1,8 @@
 <?php
 //Define website
-define('WEBSITE_URL', 'http://aarjocar-bv.test/');
+define( 'WEBSITE_URL', 'http://aarjocar-bv.test/' );
 
-if (!isset($_SESSION['user_id'])) {
-	header('location: ' . WEBSITE_URL);
+//Wanneer de user geen adin rol heeft
+if ( $_SESSION['user_role'] != 'admin' ) {
+	header( 'location: ' . WEBSITE_URL );
 }
