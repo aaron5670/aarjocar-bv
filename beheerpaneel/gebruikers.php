@@ -38,11 +38,12 @@ $row = $pdo->query("SELECT * FROM users");
                 <td><?= $value['user_role']; ?></td>
                 <td><?php
                     if ($value['user_role'] == 'admin') {
-                        echo '<a href="beheer_config/changerole.php?makeUser">Maak User</a>';
+                        echo '<a href="beheer_config/changerole.php?makeUser&id='. $value['id'] .'">Maak User</a>';
                     } else {
-                        echo '<a href="beheer_config/changerole.php?makeAdmin">Maak Admin</a>';
+                        echo '<a href="beheer_config/changerole.php?makeUser&id='. $value['id'] .'">Maak Admin</a>';
                     }
-                    ?></td>
+                    ?>
+                </td>
             </tr>
             <?php
         }
