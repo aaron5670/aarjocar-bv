@@ -24,8 +24,6 @@ $pdo->query("UPDATE page_content SET titel = '$titel', tekst = '$tekst' WHERE pa
 
 $row = $pdo->query("SELECT titel FROM page_content WHERE pageId = 1");
 $value = ($row->fetch(PDO::FETCH_ASSOC));
-
-
 ?>
 
 <div class="standaard-input-formulier">
