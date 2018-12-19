@@ -1,6 +1,6 @@
 <?php include '../config/config.php';
 require_once '../config/connect.php';
-include 'beheer_config/config.php';?>
+include 'beheer_config/config.php'; ?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -13,38 +13,14 @@ include 'beheer_config/config.php';?>
 </head>
 <body>
 <?php include 'menu/menu.php';
-if (isset($_POST['submit'])) {
-//Haalt de gegevens op van het formulier
-    $iframeurl = !empty($_POST['iframe_url']) ? trim($_POST['iframe_url']) : null;
-    $titel = !empty($_POST['titel']) ? trim($_POST['titel']) : null;
-    $omschrijving = !empty($_POST['omschrijving']) ? trim($_POST['omschrijving']) : null;
-    $kenmerk = !empty($_POST['kenmerk']) ? trim($_POST['kenmerk']) : null;
-
-// update page_content query
-    $pdo->query("UPDATE page_iframe SET iframe_url = '$iframeurl', titel = '$titel',
-                                            omschrijving = '$omschrijving', kenmerk = '$kenmerk'");
-
-}
-$row = $pdo->query("SELECT * FROM page_iframe");
-$value = ($row->fetch());
-
 ?>
-<div class="formulier-beheerpaneel">
-    <form action="videos.php" method="post">
-        <label for="iframe_url">iframe url</label>
-        <input type="text" id="iframe_url" name="iframe_url" value="<?= $value['iframe_url']; ?>"><br>
-
-        <label for="titel">Titel</label>
-        <input type="text" id="titel" name="titel" value="<?= $value['titel']; ?>"><br>
-
-        <label for="omschrijving">omschrijving</label>
-        <textarea id="omschrijving" name="omschrijving"><?= $value['omschrijving']; ?></textarea><br>
-
-        <label for="kenmerk">kenmerk</label>
-        <input type="text" id="kenmerk" name="kenmerk" value="<?= $value['kenmerk']; ?>"><br>
-
-        <input type="submit" name="submit" value="Updaten">
-    </form>
+<div class="formulier-beheerpaneel-videos">
+    <?php $row = $pdo->query("SELECT * FROM page_iframe");
+    while ($value = ($row->fetch())) { ?>
+        <div class="formulier-videos">
+            <a href="video-aanpassen.php?id=<?= $value['id'] ?>">LInk</a>
+        </div>
+    <?php } ?>
 </div>
 </body>
 </html>

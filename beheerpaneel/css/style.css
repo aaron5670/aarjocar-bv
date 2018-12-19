@@ -95,3 +95,49 @@ html, body {
     margin: 8px 0;
     height: 150px;
 }
+
+.formulier-beheerpaneel-videos {
+    position: relative;
+    float: left;
+    width: calc(100% - 230px);
+}
+
+.formulier-beheerpaneel-videos label {
+    width: 100%;
+    position: relative;
+    float: left;
+}
+.formulier-videos{
+    position: relative;
+    float: left;
+    width: calc( 50% - 80px);
+    margin: 20px;
+}
+.formulier-beheerpaneel-videos label:first-child {
+    margin-top: 25px;
+}
+
+.formulier-beheerpaneel-videos input[type=text] {
+    width: 100%;
+    position: relative;
+    float: left;
+    padding: 12px 20px;
+    margin: 8px 0;
+}
+
+.formulier-beheerpaneel-videos input[type=submit] {
+    width: 100%;
+    position: relative;
+    float: left;
+    padding: 12px 20px;
+    margin: 8px 0;
+}
+
+.formulier-beheerpaneel-videos textarea {
+    width: 100%;
+    position: relative;
+    float: left;
+    padding: 12px 20px;
+    margin: 8px 0;
+    height: 150px;
+}

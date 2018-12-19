@@ -61,13 +61,13 @@
             <?php
             $teller = 0;
             $row = $pdo->query("SELECT * FROM page_iframe");
-            while ($value = ($row->fetch())) {
+            while ($valueiframe = ($row->fetch())) {
                 if ($teller == 3) {
                     break;
                 }
                 ?>
                 <iframe class="video-home" height="315"
-                        src="<?= $value['iframe_url']; ?>"
+                        src="<?= $valueiframe['iframe_url']; ?>"
                         allowfullscreen></iframe>
                 <?php $teller++;
             } ?>
