@@ -17,22 +17,26 @@ require_once '../config/connect.php'; ?>
 //Haalt de gegevens op van het formulier
 $titel = !empty($_POST['titel']) ? trim($_POST['titel']) : null;
 $tekst = !empty($_POST['tekst']) ? trim($_POST['tekst']) : null;
+$tekst = base64_encode($tekst);
 
-// insert into page_content query
+// update page_content query
 $pdo->query("UPDATE page_content SET titel = '$titel', tekst = '$tekst' WHERE pageId = 1");
 
 
 $row = $pdo->query("SELECT titel FROM page_content WHERE pageId = 1");
-$value = ($row->fetch(PDO::FETCH_ASSOC));
+$valuetitel = ($row->fetch());
+
+$row = $pdo->query("SELECT tekst FROM page_content WHERE pageId = 1");
+$valuetekst = ($row->fetch());
 ?>
 
 <div class="standaard-input-formulier">
-    <div class="formulier-titel">
+    <div class="formulier-beheerpaneel">
         <form action="home.php" method="post">
             <label for="titel">Titel</label>
-            <input type="text" id="titel" name="titel" value="<?= $value['titel']; ?>"><br>
+            <input type="text" id="titel" name="titel" value="<?= $valuetitel['titel']; ?>"><br>
             <label for="tekst">Tekst</label>
-            <input type="text" id="tekst" name="tekst" value="test"><br>
+            <textarea id="tekst" name="tekst"><?= base64_decode($valuetekst['tekst']); ?></textarea><br>
             <input type="submit" name="register" value="Register">
         </form>
     </div>

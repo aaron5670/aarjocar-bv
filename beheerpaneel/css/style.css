@@ -47,3 +47,38 @@ html, body {
     display: block;
     padding: 13px 0px;
 }
+.formulier-beheerpaneel{
+    position: relative;
+    float: left;
+    width: calc( 100% - 230px);
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.formulier-beheerpaneel label{
+    width: 100%;
+    position: relative;
+    float: left;
+    margin-top: 25px;
+}
+.formulier-beheerpaneel input[type=text]{
+    width: 60%;
+    position: relative;
+    float: left;
+    padding: 12px 20px;
+    margin: 8px 0;
+}
+.formulier-beheerpaneel input[type=submit]{
+    width: 60%;
+    position: relative;
+    float: left;
+    padding: 12px 20px;
+    margin: 8px 0;
+}
+.formulier-beheerpaneel textarea{
+    width: 60%;
+    position: relative;
+    float: left;
+    padding: 12px 20px;
+    margin: 8px 0;
+    height: 150px;
+}

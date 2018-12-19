@@ -17,26 +17,15 @@
             require_once 'config/connect.php';
 
             $row = $pdo->query("SELECT titel FROM page_content WHERE pageId = 1");
-            $test = ($row->fetch(PDO::FETCH_ASSOC));
+            $valuetitel = ($row->fetch(PDO::FETCH_ASSOC));
+
+            $row = $pdo->query("SELECT tekst FROM page_content WHERE pageId = 1");
+            $valuetekst = ($row->fetch(PDO::FETCH_ASSOC));
             ?>
 
-            <h1><?= $test['titel']; ?></h1>
+            <h1><?= $valuetitel['titel']; ?></h1>
             <p>
-                Welkom op de website AARJO Car BV. Op deze website kunt u informatie vinden over auto's. U kunt uw
-                kennis over auto's hier uitbreiden. Deze website is bedoeld voor mensen die geïnteresseerd zijn in
-                auto's.
-                <br/>
-                <br/>
-                Ook bevindt zich op deze website een forum. Hier hebben bezoekers de mogelijkheid om met elkaar te
-                discussieren over onderwerpen die betrekken hebben op auto's. Voordat je op dit forum kunt moet een
-                bezoeker zich registrenen en/of inloggen. Dit kunt u doen door rechtsboven op inloggen te
-                klikken. Of door <a href="<?= $url; ?>inloggen.php">hier</a> te klikken.
-                <br/>
-                <br/>
-                Op de video's pagina kunt u een tiental video's bekijken over auto's, dit zullen informatieve video's
-                zijn met een korte beschrijving
-
-
+                <?= base64_decode($valuetekst['tekst']); ?>
             </p>
         </div>
         <div class="content-forum-items">
@@ -71,6 +60,9 @@
     </div>
     <div class="sectie-inner">
         <div class="video-home-container">
+
+
+
             <iframe class="video-home" height="315"
                     src="https://www.youtube-nocookie.com/embed/Cw_zy60o8j0?controls=0"
                     allowfullscreen></iframe>
