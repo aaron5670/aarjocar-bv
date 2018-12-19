@@ -51,8 +51,9 @@ CREATE TABLE users (
 CREATE TABLE page_content(
 	pageId		int			identity,
 	titel		varchar(255)	NOT NULL,
-	tekst		varchar(255)	NOT NULL
+	tekst		text			NOT NULL,
 )
+
 
 ALTER TABLE page_content
 ADD CONSTRAINT PK_pageId
@@ -72,9 +73,9 @@ INSERT INTO users VALUES
  INSERT INTO users VALUES
  ('Joris', 'password')
 
+INSERT INTO page_content values
+ ('Welkom bij Aarjocar Bv', 'Test')
+
 SELECT * FROM users
 
 SELECT * FROM page_content
-
-INSERT INTO page_content values
-	('Welkom bij Aarjocar Bv', 'Test')
