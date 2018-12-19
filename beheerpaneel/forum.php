@@ -1,4 +1,7 @@
-<?php include '../config/config.php' ?>
+<?php include '../config/config.php';
+require_once '../config/connect.php';
+include 'beheer_config/config.php';
+?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
