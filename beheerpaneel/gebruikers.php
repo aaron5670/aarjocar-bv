@@ -15,37 +15,39 @@ include 'beheer_config/config.php';
 <body>
 <?php include 'menu/menu.php' ?>
 <?php
-$row = $pdo->query( "SELECT * FROM users" );
+$row = $pdo->query("SELECT * FROM users");
 ?>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Naam</th>
-        <th>Email</th>
-        <th>Gebruikersnaam</th>
-        <th>Rol</th>
-        <th>Actie</th>
-    </tr>
-	<?php
-	while ( $value = ( $row->fetch() ) ) {
-		?>
+<div class="gebruiker-tabel">
+    <table>
         <tr>
-            <td><?= $value['id']; ?></td>
-            <td><?= $value['firstname'] . ' ' . $value['lastname']; ?></td>
-            <td><?= $value['email']; ?></td>
-            <td><?= $value['username']; ?></td>
-            <td><?= $value['user_role']; ?></td>
-			<?php
-			if ( $value['user_role'] == 'admin' ) {
-				echo '<a href="beheer_config/changerole.php?makeUser">Maak User</a>';
-			} else {
-				echo '<a href="beheer_config/changerole.php?makeAdmin">Maak Admin</a>';
-			}
-			?>
+            <th>ID</th>
+            <th>Naam</th>
+            <th>Email</th>
+            <th>Gebruikersnaam</th>
+            <th>Rol</th>
+            <th>Actie</th>
         </tr>
-		<?php
-	}
-	?>
-</table>
+        <?php
+        while ($value = ($row->fetch())) {
+            ?>
+            <tr>
+                <td><?= $value['id']; ?></td>
+                <td><?= $value['firstname'] . ' ' . $value['lastname']; ?></td>
+                <td><?= $value['email']; ?></td>
+                <td><?= $value['username']; ?></td>
+                <td><?= $value['user_role']; ?></td>
+                <td><?php
+                    if ($value['user_role'] == 'admin') {
+                        echo '<a href="beheer_config/changerole.php?makeUser">Maak User</a>';
+                    } else {
+                        echo '<a href="beheer_config/changerole.php?makeAdmin">Maak Admin</a>';
+                    }
+                    ?></td>
+            </tr>
+            <?php
+        }
+        ?>
+    </table>
+</div>
 </body>
 </html>

@@ -141,3 +141,22 @@ html, body {
     margin: 8px 0;
     height: 150px;
 }
+.gebruiker-tabel{
+    padding: 25px;
+    position: relative;
+    float: left;
+    width: calc(100% - 230px);
+}
+.gebruiker-tabel table{
+    width: 100%;
+    text-align: center;
+}
+.gebruiker-tabel th{
+    background-color: #ff970d;
+    border: black solid 1px;
+    color: black;
+}
+.gebruiker-tabel td{
+    background-color: #5ac1e7;
+    border: black solid 1px;
+}
