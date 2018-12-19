@@ -7,7 +7,6 @@ if ( isset( $_SESSION['user_id'] ) ) {
 
 if ( $_GET['succes'] ) {
 	$message = 'U bent succesvol geregistreerd!';
-	print_r($_GET);
 }
 
 //database connectie
@@ -22,7 +21,7 @@ if ( isset( $_POST['login'] ) ) {
 	$passwordAttempt = ! empty( $_POST['password'] ) ? trim( $_POST['password'] ) : null;
 
 	//Retrieve the user account information for the given username.
-	$sql  = "SELECT id, username, password FROM users WHERE username = :username";
+	$sql  = "SELECT * FROM users WHERE username = :username";
 	$stmt = $pdo->prepare( $sql );
 
 	//Bind value.
@@ -52,8 +51,10 @@ if ( isset( $_POST['login'] ) ) {
 		if ( $validPassword ) {
 
 			//Provide the user with a login session.
-			$_SESSION['user_id']  = $user['id'];
-			$_SESSION['username'] = $user['username'];
+			$_SESSION['user_id']   = $user['id'];
+			$_SESSION['username']  = $user['username'];
+			$_SESSION['firstname'] = $user['firstname'];
+			$_SESSION['lastname']  = $user['lastname'];
 
 			//Redirect to our protected page, which we called home.php
 			header( 'Location: beheerpaneel' );

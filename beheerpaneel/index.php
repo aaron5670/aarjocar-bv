@@ -14,5 +14,6 @@ include 'beheer_config/config.php';
 </head>
 <body>
 <?php include 'menu/menu.php' ?>
+<h1>Welkom <?= $_SESSION['firstname'] ?> <?= $_SESSION['lastname'] ?></h1>
 </body>
 </html>

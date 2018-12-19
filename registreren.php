@@ -9,9 +9,11 @@ if ( isset( $_SESSION['user_id'] ) ) {
 require_once 'config/connect.php';
 
 if ( isset( $_POST['register'] ) ) {
-	//Haalt de gegevens op van het formulier
-	$username = ! empty( $_POST['username'] ) ? trim( $_POST['username'] ) : null;
-	$pass     = ! empty( $_POST['password'] ) ? trim( $_POST['password'] ) : null;
+	$firstname = ! empty( $_POST['firstname'] ) ? trim( $_POST['firstname'] ) : null;
+	$lastname  = ! empty( $_POST['lastname'] ) ? trim( $_POST['lastname'] ) : null;
+	$email     = ! empty( $_POST['email'] ) ? trim( $_POST['email'] ) : null;
+	$username  = ! empty( $_POST['username'] ) ? trim( $_POST['username'] ) : null;
+	$pass      = ! empty( $_POST['password'] ) ? trim( $_POST['password'] ) : null;
 
 	//Maakt een SQL query
 	$sql  = "SELECT COUNT( username ) AS num FROM users WHERE username = :username";
@@ -34,11 +36,11 @@ if ( isset( $_POST['register'] ) ) {
 		$passwordHash = password_hash( $pass, PASSWORD_BCRYPT, array( "cost" => 12 ) );
 
 		//Insert de gegevens in de database
-		$pdo->query( "INSERT INTO users( username, password ) values( '$username', '$passwordHash' )" );
+		$pdo->query( "INSERT INTO users( username, password, firstname, lastname, email ) values( '$username', '$passwordHash', '$firstname', '$lastname', '$email' )" );
 
 		//als het gelukt is
 		if ( $stmt ) {
-		    header('Location: ' . $url . 'inloggen.php?succes=true');
+			header( 'Location: ' . $url . 'inloggen.php?succes=true' );
 		} else {
 			$message = 'Er is iets niet goed gegaan...';
 		}
@@ -54,18 +56,23 @@ if ( isset( $_POST['register'] ) ) {
 						echo '<h1>' . $message . '</h1>';
 					}
 					?>
+                    <label for="firstname"><b>Voornaam</b></label>
+                    <input type="text" placeholder="Vul hier uw voornaam in" name="firstname" id="firstname" required>
+
+                    <label for="lastname"><b>Achternaam</b></label>
+                    <input type="text" placeholder="Vul hier uw achternaam in" name="lastname" id="lastname" required>
+
+                    <label for="email"><b>E-mailadres</b></label>
+                    <input type="text" placeholder="Vul hier uw E-mailadres in" name="email" id="email" required>
+
                     <label for="username"><b>Gebruikersnaam</b></label>
                     <input type="text" placeholder="Vul hier uw Gebruikersnaam in" name="username" id="username"
                            autofocus required>
-                    <!--                    <label><b>Voornaam</b></label>-->
-                    <!--                    <input type="text" placeholder="Vul hier uw voornaam in" name="voornaam" required>-->
-                    <!--                    <label><b>Achternaam</b></label>-->
-                    <!--                    <input type="text" placeholder="Vul hier uw achternaam in" name="achternaam" required>-->
-                    <!--                    <label><b>E-mailadres</b></label>-->
-                    <!--                    <input type="text" placeholder="Vul hier uw E-mailadres in" name="E-mailadres" required>-->
+
                     <label for="password"><b>Password</b></label>
                     <input type="password" placeholder="Vul hier uw wachtwoord in" name="password" id="password"
                            required>
+
                     <label>
                         Bent u al geregisteerd? Klik dan <a href="inloggen.php">hier</a>!
                     </label>
