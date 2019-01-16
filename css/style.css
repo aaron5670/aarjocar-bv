@@ -70,6 +70,7 @@ img {
     text-transform: uppercase;
     text-shadow: 0px 3px 20px black;
 }
+
 #nav {
     margin: 0 auto;
     padding: 0;
@@ -467,22 +468,130 @@ a {
     padding: 0.5em 0.5em;
     border-right: solid 1px #d9d9d9;
 }
-.filter-menu-label{
+
+.filter-menu-label {
+    position: relative;
+    float: left;
+    width: 100%;
+    z-index: 10;
+
+}
+
+.filter-menu-submit {
+    position: relative;
+    float: left;
+    width: 51%;
+    z-index: 10;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    background-color: #ff9200;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 15px;
+}
+
+.container-zoeken-opties {
+    position: relative;
+    float: left;
+    width: 50%;
+}
+
+.filter-menu-label > h2 {
+    font-size: 22px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.container-zoeken-opties > input {
+    color: #000;
+    float: left;
+    width: 100%;
+    border: 0 solid;
+    margin-bottom: 10px;
+    line-height: normal !important;
+    padding: 15px;
+    background-color: #F0F0F0;
+}
+
+.container-zoeken-opties > select {
+    color: #000;
+    float: left;
+    width: 100%;
+    border: 0 solid;
+    margin-bottom: 10px;
+    line-height: normal !important;
+    padding: 15px;
+    background-color: #F0F0F0;
+}
+
+.filter-menu {
+    position: relative;
+    float: left;
+    width: 51%;
+    z-index: 10;
+    margin-bottom: 10px;
+}
+
+footer {
+    z-index: 10;
+}
+
+.video-vervolg-container {
     position: relative;
     float: left;
     width: 100%;
     z-index: 10;
 }
-.filter-menu{
+
+.video-vervolg-container > .video {
+    width: 55%;
+    padding: 25px 5% 25px 0;
+    float: left;
+}
+
+.omschrijving {
     position: relative;
     float: left;
-    width: 15%;
-    z-index: 10;
+    width: 40%;
+    font-size: 20px;
+    padding-top: 25px;
+    letter-spacing: 1px;
+    margin-bottom: 50px;
+}
+
+.omschrijving > h2 {
+    font-size: 22px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.publicatiedatum > h2 {
+    font-size: 22px;
+    font-weight: normal;
+    margin-bottom: 10px;
 }
 
 @media all and (max-width: 767px) {
     .flex-row {
         width: 100%;
+    }
+
+    .container-zoeken-opties {
+        width: 100%;
+    }
+
+    .filter-menu-submit, .filter-menu, .filter-menu-label {
+        width: 100%;
+    }
+
+    .video-vervolg-container > .video, .omschrijving, .publicatiedatum {
+        width: 100%;
+    }
+
+    .video-vervolg-container > .publicatiedatum {
+        margin-bottom: 25px;
     }
 
     .flex-row.first {
@@ -575,28 +684,39 @@ a {
     .content-forum-items {
         width: 100%;
     }
-    .inlog-formulier{
+
+    .container-header-foto {
+        margin-top: -153px;
+    }
+
+    .inlog-formulier {
         margin-top: 50px;
     }
-    .inlog-formulier > input{
+
+    .inlog-formulier > input {
         width: 100%;
     }
-    .inlog-formulier > .button-container > .inlogknop{
-        width: 60%  ;
+
+    .inlog-formulier > .button-container > .inlogknop {
+        width: 60%;
     }
+
     .footer-kolom {
         width: 100%;
     }
-    .informatie-videos-container{
+
+    .informatie-videos-container {
         z-index: 0;
     }
+
     .informatie-bouwers {
         z-index: 0;
     }
 
-    .informatie-jorisaaron{
+    .informatie-jorisaaron {
         margin-top: 30px;
     }
+
     .content-forum-tekst {
         padding-top: 60px;
         z-index: 0;
@@ -638,11 +758,11 @@ a {
     #nav {
         width: 100%;
         float: left;
-        margin-top: 115px;
+
     }
 
     #nav li a {
-        color: black;
+
         text-shadow: 0 0 0 black;
     }
 
@@ -659,26 +779,33 @@ a {
     }
 }
 
+@media screen and (max-width: 462px) {
+    .container-header-foto {
+        margin-top: -175px;
+    }
+}
+
 @media screen and (max-width: 500px) {
-    #nav {
-        margin-top: 75px;
+    #nav li a {
+        color: black;
+        filter: drop-shadow(1px 2px 1px white);
     }
 }
 
-@media screen and (max-width: 430px) {
-    #nav {
-        margin-top: 40px;
-    }
-}
+/*@media screen and (max-width: 430px) {*/
+/*#nav {*/
+/*margin-top: 40px;*/
+/*}*/
+/*}*/
 
-@media screen and (max-width: 377px) {
-    #nav {
-        margin-top: 27px;
-    }
-}
+/*@media screen and (max-width: 377px) {*/
+/*#nav {*/
+/*margin-top: 27px;*/
+/*}*/
+/*}*/
 
-@media screen and (max-width: 377px) {
-    #nav {
-        margin-top: 20px;
-    }
-}
+/*@media screen and (max-width: 377px) {*/
+/*#nav {*/
+/*margin-top: 20px;*/
+/*}*/
+/*}*/
