@@ -1,8 +1,8 @@
-<?php include '../config/config.php';
-require_once '../config/connect.php';
-include 'beheer_config/config.php'; ?>
-
 <?php
+include '../config/config.php';
+require_once '../config/connect.php';
+include 'beheer_config/config.php';
+
 if ( isset( $_GET['id'] ) ) {
 	$_SESSION['id'] = $_GET['id'];
 	$id             = $_SESSION['id'];
@@ -26,22 +26,31 @@ if ( isset( $_GET['succes'] ) == true ) {
     <link rel="shortcut icon" type="image/x-icon" href="<?= $url; ?>favicon.ico">
 </head>
 <body>
-<?php include 'includes/menu.php';
+<?php
+include 'includes/menu.php';
 if ( isset( $_POST['submit'] ) ) {
-//Haalt de gegevens op van het formulier
+	//Haalt de gegevens op van het formulier
 	$iframeurl    = ! empty( $_POST['iframe_url'] ) ? trim( $_POST['iframe_url'] ) : null;
 	$titel        = ! empty( $_POST['titel'] ) ? trim( $_POST['titel'] ) : null;
 	$omschrijving = ! empty( $_POST['omschrijving'] ) ? trim( $_POST['omschrijving'] ) : null;
 	$categorie    = ! empty( $_POST['categorie'] ) ? trim( $_POST['categorie'] ) : null;
 	$id           = $_SESSION['id'];
 
-// update page_content query
-	$pdo->query( "UPDATE page_iframe SET iframe_url = '$iframeurl', titel = '$titel',
-                                            omschrijving = '$omschrijving', categorie = $categorie WHERE id = '$id'" );
+	$data = [
+		'iframe_url'   => $iframeurl,
+		'titel'        => $titel,
+		'omschrijving' => $omschrijving,
+		'categorie'    => $categorie,
+		'id'           => $id
+	];
+
+	// Update statement
+	$sql  = "UPDATE page_iframe SET iframe_url=:iframe_url, titel=:titel, omschrijving=:omschrijving, categorie=:categorie WHERE id = :id";
+	$stmt = $pdo->prepare( $sql );
+	$stmt->execute( $data );
 
 	header( 'Location: video-aanpassen.php?id=' . $id . '&succes=true' );
 }
-
 ?>
 <div class="formulier-beheerpaneel-videos">
 	<?php
