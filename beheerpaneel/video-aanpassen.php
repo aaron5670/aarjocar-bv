@@ -32,7 +32,7 @@ if ( isset( $_POST['submit'] ) ) {
 	$iframeurl    = ! empty( $_POST['iframe_url'] ) ? trim( $_POST['iframe_url'] ) : null;
 	$titel        = ! empty( $_POST['titel'] ) ? trim( $_POST['titel'] ) : null;
 	$omschrijving = ! empty( $_POST['omschrijving'] ) ? trim( $_POST['omschrijving'] ) : null;
-	$categorie      = ! empty( $_POST['categorie'] ) ? trim( $_POST['categorie'] ) : null;
+	$categorie    = ! empty( $_POST['categorie'] ) ? trim( $_POST['categorie'] ) : null;
 	$id           = $_SESSION['id'];
 
 // update page_content query
@@ -45,13 +45,16 @@ if ( isset( $_POST['submit'] ) ) {
 ?>
 <div class="formulier-beheerpaneel-videos">
 	<?php
-	if ( isset( $_GET['succes'] )) {
+	if ( isset( $_GET['succes'] ) ) {
 		echo '<h1>' . $message . '</h1>';
 	}
 	?>
     <form action="video-aanpassen.php" method="post">
-		<?php $row = $pdo->query( "SELECT * FROM page_iframe WHERE id = '$id'" );
-		$value     = ( $row->fetch() ); ?>
+		<?php
+		$stmt = $pdo->prepare( "SELECT * FROM page_iframe WHERE id=:id" );
+		$stmt->execute( [ 'id' => $id ] );
+		$value = $stmt->fetch();
+		?>
         <div class="formulier-videos">
             <label for="iframe_url">iframe url</label>
             <input type="text" id="iframe_url" name="iframe_url" value="<?= $value['iframe_url']; ?>"><br>
