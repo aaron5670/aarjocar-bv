@@ -31,6 +31,7 @@ if ( strpos( $_SERVER['REQUEST_URI'], 'submenu_paginas' ) == true ) {
                 <a href="<?= $url; ?>logout.php">
                     Uitloggen
                 </a>
+                <p>Welkom <?= $_SESSION['firstname'] ?></p>
             </div>
 			<?php
 		} else {
