@@ -14,15 +14,16 @@ include 'beheer_config/config.php'; ?>
 <body>
 <?php
 include 'includes/menu.php';
-$row = $pdo->query( "SELECT * FROM page_iframe" );
+$row = $pdo->query( "SELECT * FROM page_iframe ORDER BY categorie" );
 ?>
 <div class="gebruiker-tabel">
     <table>
         <tr>
             <th>ID</th>
+            <th>iFrame-url</th>
             <th>titel</th>
             <th>Omschrijving</th>
-            <th>Kenmerk</th>
+            <th>Categorie</th>
             <th>Actie</th>
         </tr>
 		<?php
@@ -30,9 +31,10 @@ $row = $pdo->query( "SELECT * FROM page_iframe" );
 			?>
             <tr>
                 <td><?= $value['id']; ?></td>
+                <td><?= $value['iframe_url']; ?></td>
                 <td><?= $value['titel']; ?></td>
                 <td><?= $value['omschrijving']; ?></td>
-                <td><?= $value['kenmerk']; ?></td>
+                <td><?= $value['categorie']; ?></td>
                 <td><a href="video-aanpassen.php?id=<?= $value['id'] ?>">Aanpassen</a></td>
             </tr>
 			<?php

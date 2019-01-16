@@ -11,7 +11,7 @@ if ( isset( $_GET['id'] ) ) {
 }
 
 if ( isset( $_GET['succes'] ) == true ) {
-	$message = 'Gelukt, alles opgelsagen!';
+	$message = 'Gelukt, alles opgeslagen!';
 }
 ?>
 
@@ -32,12 +32,12 @@ if ( isset( $_POST['submit'] ) ) {
 	$iframeurl    = ! empty( $_POST['iframe_url'] ) ? trim( $_POST['iframe_url'] ) : null;
 	$titel        = ! empty( $_POST['titel'] ) ? trim( $_POST['titel'] ) : null;
 	$omschrijving = ! empty( $_POST['omschrijving'] ) ? trim( $_POST['omschrijving'] ) : null;
-	$kenmerk      = ! empty( $_POST['kenmerk'] ) ? trim( $_POST['kenmerk'] ) : null;
+	$categorie      = ! empty( $_POST['categorie'] ) ? trim( $_POST['categorie'] ) : null;
 	$id           = $_SESSION['id'];
 
 // update page_content query
 	$pdo->query( "UPDATE page_iframe SET iframe_url = '$iframeurl', titel = '$titel',
-                                            omschrijving = '$omschrijving', kenmerk = '$kenmerk' WHERE id = '$id'" );
+                                            omschrijving = '$omschrijving', categorie = $categorie WHERE id = '$id'" );
 
 	header( 'Location: video-aanpassen.php?id=' . $id . '&succes=true' );
 }
@@ -62,8 +62,8 @@ if ( isset( $_POST['submit'] ) ) {
             <label for="omschrijving">omschrijving</label>
             <textarea id="omschrijving" name="omschrijving"><?= $value['omschrijving']; ?></textarea><br>
 
-            <label for="kenmerk">kenmerk</label>
-            <input type="text" id="kenmerk" name="kenmerk" value="<?= $value['kenmerk']; ?>"><br>
+            <label for="categorie">categorie</label>
+            <input type="text" id="categorie" name="categorie" value="<?= $value['categorie']; ?>"><br>
 
             <input type="submit" name="submit" value="Updaten">
         </div>
