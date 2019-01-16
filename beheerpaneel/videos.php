@@ -12,15 +12,34 @@ include 'beheer_config/config.php'; ?>
     <link rel="shortcut icon" type="image/x-icon" href="<?= $url; ?>favicon.ico">
 </head>
 <body>
-<?php include 'includes/menu.php';
+<?php
+include 'includes/menu.php';
+$row = $pdo->query( "SELECT * FROM page_iframe" );
 ?>
-<div class="formulier-beheerpaneel-videos">
-    <?php $row = $pdo->query("SELECT * FROM page_iframe");
-    while ($value = ($row->fetch())) { ?>
-        <div class="formulier-videos">
-            <a href="video-aanpassen.php?id=<?= $value['id'] ?>">LInk</a>
-        </div>
-    <?php } ?>
+<div class="gebruiker-tabel">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>titel</th>
+            <th>Omschrijving</th>
+            <th>Kenmerk</th>
+            <th>Actie</th>
+        </tr>
+		<?php
+		while ( $value = ( $row->fetch() ) ) {
+			?>
+            <tr>
+                <td><?= $value['id']; ?></td>
+                <td><?= $value['titel']; ?></td>
+                <td><?= $value['omschrijving']; ?></td>
+                <td><?= $value['kenmerk']; ?></td>
+                <td><a href="video-aanpassen.php?id=<?= $value['id'] ?>">Aanpassen</a></td>
+            </tr>
+			<?php
+		}
+		?>
+    </table>
 </div>
+
 </body>
 </html>
