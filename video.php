@@ -17,9 +17,9 @@ require_once 'config/connect.php';
                 <input type="text" class="filter-menu" name="zoekwoord" id="zoekwoord" placeholder="Zoek hier">
                 <label for="zoekwoord" class="filter-menu-label"><h2>Sorteren</h2></label>
                 <select id="categorie" name="categorie" class="filter-menu">
-                    <?php $stmt = $pdo->query("SELECT * FROM categorieen"); ?>
+                    <?php $stmt = $pdo->query("SELECT * FROM sorteren"); ?>
                     <?php while ($valuefilter = ($stmt->fetch())) { ?>
-                        <option value="<?= $valuefilter['categorie']; ?>"><?= $valuefilter['categorie']; ?></option>
+                        <option value="<?= $valuefilter['soortSortering']; ?>"><?= $valuefilter['soortSortering']; ?></option>
                     <?php } ?>
                 </select>
                 <input class="filter-menu-submit" type="submit" name="submit" value="filteren">
