@@ -57,7 +57,7 @@ if ( isset( $_POST['submit'] ) ) {
 		echo '<p>' . $message . '</p>';
 	}
 	?>
-    <form action="toevoegen.php" method="post">
+    <form action="rubriek-toevoegen.php" method="post">
         <div class="formulier-videos">
             <label for="rubriek">Rubrieknaam</label>
             <input type="text" id="rubriek" name="rubriek">

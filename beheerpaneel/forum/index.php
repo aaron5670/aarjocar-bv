@@ -18,7 +18,7 @@ include '../beheer_config/config.php';
 $row = $pdo->query( "SELECT * FROM rubrieken" );
 ?>
 <div class="gebruiker-tabel">
-    <a href="toevoegen.php">Rubriek toevoegen</a>
+    <a href="rubriek-toevoegen.php">Rubriek toevoegen</a>
 	<?php
 	if ( isset( $_GET['succes'] ) == true ) {
 		echo '<p>Rubriek succesvol toegevoegd</p>';
