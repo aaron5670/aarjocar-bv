@@ -56,17 +56,6 @@ if ( strpos( $_SERVER['REQUEST_URI'], 'submenu_paginas' ) == true ) {
                 <a href="<?= $url; ?>video.php">
                     Video's
                 </a>
-                <ul class="submenu">
-                    <li>
-                        <a href="<?= $url; ?>submenu_paginas/motorauto.php">Motor auto</a>
-                    </li>
-                    <li>
-                        <a href="<?= $url; ?>submenu_paginas/componentenauto.php">Componenten auto</a>
-                    </li>
-                    <li>
-                        <a href="<?= $url; ?>submenu_paginas/tipsfeitjes.php">Tips & Feitjes</a>
-                    </li>
-                </ul>
             </li>
             <li>
                 <a href="<?= $url; ?>forum.php">
