@@ -8,7 +8,6 @@ require_once 'config/connect.php';
             <form action="" method="post">
                 <label class="filter-menu-label" for="categorie">Categorie</label>
                 <select id="categorie" name="categorie" class="filter-menu">
-                    <option value=""></option>
 					<?php $stmt = $pdo->query( "SELECT * FROM categorieen" ); ?>
 					<?php while ( $valuefilter = ( $stmt->fetch() ) ) { ?>
                         <option value="<?= $valuefilter['categorie']; ?>"><?= $valuefilter['categorie']; ?></option>
@@ -38,14 +37,17 @@ require_once 'config/connect.php';
                     <div class="informatie-videos">
                         <h1><?= $value['titel']; ?></h1>
                         <p>
-							<?= $value['omschrijving']; ?>
+                            <?= $value['omschrijving']; ?>
                         </p>
-                        <iframe height="315" src="<?= $value['iframe_url']; ?>"
-                                allowfullscreen></iframe>
+                        <a href="video-vervolg.php">
+                            <img src="images/videoimages/<?= $value['afbeelding']; ?>" alt="<?= $value['titel']; ?>">
+                        </a>
+                        <!--                        <iframe height="315" src="--><?//= $value['iframe_url']; ?><!--"-->
+                        <!--                                allowfullscreen></iframe>-->
                     </div>
-					<?php
-				}
-				?>
+                    <?php
+                }
+                ?>
             </div>
     </main>
 <?php include 'includes/footer.php' ?>
