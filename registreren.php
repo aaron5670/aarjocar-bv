@@ -13,7 +13,7 @@ if ( isset( $_POST['register'] ) ) {
 	$lastname  = ! empty( $_POST['lastname'] ) ? trim( $_POST['lastname'] ) : null;
 	$email     = ! empty( $_POST['email'] ) ? trim( $_POST['email'] ) : null;
 	$username  = ! empty( $_POST['username'] ) ? trim( $_POST['username'] ) : null;
-	$pass      = ! empty( $_POST['password'] ) ? trim( $_POST['password'] ) : null;
+
 
 	//Maakt een SQL query
 	$sql  = "SELECT COUNT( username ) AS num FROM users WHERE username = :username";
@@ -30,21 +30,31 @@ if ( isset( $_POST['register'] ) ) {
 
 	//Controleert of de gebruikersnaam al bestaat.
 	if ( $row['num'] > 0 ) {
-		$message = 'Gebruikersnaam bestaat al.';
+		$message = 'Gebruikersnaam bestaat al...';
 	} else {
-		//Hash het wachtwoord (veiligheid)
-		$passwordHash = password_hash( $pass, PASSWORD_BCRYPT, array( "cost" => 12 ) );
+		//Controleert of de wachtwoorden overheen komen.
+		if ( $_POST['password'] == $_POST['repeatPassword'] ) {
+			$pass = trim( $_POST['repeatPassword'] );
 
-		//Insert de gegevens in de database
-		$pdo->query( "INSERT INTO users( username, password, firstname, lastname, email ) values( '$username', '$passwordHash', '$firstname', '$lastname', '$email' )" );
-
-		//als het gelukt is
-		if ( $stmt ) {
-			header( 'Location: ' . $url . 'inloggen.php?succes=true' );
+			//Hash het wachtwoord (veiligheid)
+			$passwordHash = password_hash( $pass, PASSWORD_BCRYPT, array( "cost" => 12 ) );
 		} else {
-			$message = 'Er is iets niet goed gegaan...';
+			$message = 'Wachtwoord komt niet overeen...';
+		}
+
+		if ( ! isset( $message ) ) {
+			//Insert de gegevens in de database
+			$pdo->query( "INSERT INTO users( username, password, firstname, lastname, email ) values( '$username', '$passwordHash', '$firstname', '$lastname', '$email' )" );
+
+			//als het gelukt is
+			if ( $stmt ) {
+				header( 'Location: ' . $url . 'inloggen.php?succes=true' );
+			} else {
+				$message = 'Er is iets niet goed gegaan...';
+			}
 		}
 	}
+
 }
 ?>
     <main class="sectie-main">
@@ -57,7 +67,8 @@ if ( isset( $_POST['register'] ) ) {
 					}
 					?>
                     <label for="firstname"><b>Voornaam</b></label>
-                    <input type="text" placeholder="Vul hier uw voornaam in" name="firstname" id="firstname" required>
+                    <input type="text" placeholder="Vul hier uw voornaam in" name="firstname" id="firstname" autofocus
+                           required>
 
                     <label for="lastname"><b>Achternaam</b></label>
                     <input type="text" placeholder="Vul hier uw achternaam in" name="lastname" id="lastname" required>
@@ -67,10 +78,15 @@ if ( isset( $_POST['register'] ) ) {
 
                     <label for="username"><b>Gebruikersnaam</b></label>
                     <input type="text" placeholder="Vul hier uw Gebruikersnaam in" name="username" id="username"
-                           autofocus required>
+                           required>
 
-                    <label for="password"><b>Password</b></label>
+                    <label for="password"><b>Wachtwoord</b></label>
                     <input type="password" placeholder="Vul hier uw wachtwoord in" name="password" id="password"
+                           required>
+
+                    <label for="repeatPassword"><b>Herhaal wachtwoord</b></label>
+                    <input type="password" placeholder="Vul hier uw wachtwoord in" name="repeatPassword"
+                           id="repeatPassword"
                            required>
 
                     <label>
