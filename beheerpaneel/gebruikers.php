@@ -15,7 +15,7 @@ include 'beheer_config/config.php';
 <body>
 <?php include 'includes/menu.php' ?>
 <?php
-$row = $pdo->query("SELECT * FROM users");
+$row = $pdo->query( "SELECT * FROM users" );
 ?>
 <div class="gebruiker-tabel">
     <table>
@@ -27,27 +27,28 @@ $row = $pdo->query("SELECT * FROM users");
             <th>Rol</th>
             <th>Actie</th>
         </tr>
-        <?php
-        while ($value = ($row->fetch())) {
-            ?>
+		<?php
+		while ( $value = ( $row->fetch() ) ) {
+			?>
             <tr>
                 <td><?= $value['id']; ?></td>
                 <td><?= $value['firstname'] . ' ' . $value['lastname']; ?></td>
                 <td><?= $value['email']; ?></td>
                 <td><?= $value['username']; ?></td>
                 <td><?= $value['user_role']; ?></td>
-                <td><?php
-                    if ($value['user_role'] == 'admin') {
-                        echo '<a href="beheer_config/change-role.php?makeUser&id='. $value['id'] .'">Maak User</a>';
-                    } else {
-                        echo '<a href="beheer_config/change-role.php?makeAdmin&id='. $value['id'] .'">Maak Admin</a>';
-                    }
-                    ?>
+                <td>
+					<?php
+					if ( $value['user_role'] == 'admin' ) {
+						echo '<a href="beheer_config/change-role.php?makeUser&id=' . $value['id'] . '">Maak User</a>';
+					} else {
+						echo '<a href="beheer_config/change-role.php?makeAdmin&id=' . $value['id'] . '">Maak Admin</a>';
+					}
+					?>
                 </td>
             </tr>
-            <?php
-        }
-        ?>
+			<?php
+		}
+		?>
     </table>
 </div>
 </body>
