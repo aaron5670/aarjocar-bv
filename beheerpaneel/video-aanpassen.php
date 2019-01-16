@@ -26,7 +26,7 @@ if ( isset( $_GET['succes'] ) == true ) {
     <link rel="shortcut icon" type="image/x-icon" href="<?= $url; ?>favicon.ico">
 </head>
 <body>
-<?php include 'menu/menu.php';
+<?php include 'includes/menu.php';
 if ( isset( $_POST['submit'] ) ) {
 //Haalt de gegevens op van het formulier
 	$iframeurl    = ! empty( $_POST['iframe_url'] ) ? trim( $_POST['iframe_url'] ) : null;

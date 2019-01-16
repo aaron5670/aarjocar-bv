@@ -12,7 +12,7 @@ include 'beheer_config/config.php'; ?>
     <link rel="shortcut icon" type="image/x-icon" href="<?= $url; ?>favicon.ico">
 </head>
 <body>
-<?php include 'menu/menu.php';
+<?php include 'includes/menu.php';
 ?>
 <div class="formulier-beheerpaneel-videos">
     <?php $row = $pdo->query("SELECT * FROM page_iframe");

@@ -13,6 +13,6 @@ include 'beheer_config/config.php';
     <link rel="shortcut icon" type="image/x-icon" href="<?= $url; ?>favicon.ico">
 </head>
 <body>
-<?php include 'menu/menu.php' ?>
+<?php include 'includes/menu.php' ?>
 </body>
 </html>

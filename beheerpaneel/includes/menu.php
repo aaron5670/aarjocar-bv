@@ -12,7 +12,7 @@
             </a>
         </li>
         <li>
-            <a href="<?= $url; ?>beheerpaneel/forum.php">
+            <a href="<?= $url; ?>beheerpaneel/forum/index.php">
                 Forum
             </a>
         </li>
