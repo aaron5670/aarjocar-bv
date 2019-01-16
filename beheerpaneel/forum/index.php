@@ -21,7 +21,7 @@ $row = $pdo->query( "SELECT * FROM rubrieken" );
     <a href="rubriek-toevoegen.php">Rubriek toevoegen</a>
 	<?php
 	if ( isset( $_GET['succes'] ) == true ) {
-		echo '<p>Rubriek succesvol toegevoegd</p>';
+		echo '<p>Actie succesvol gelukt!</p>';
 	}
 	?>
     <table>
@@ -29,7 +29,8 @@ $row = $pdo->query( "SELECT * FROM rubrieken" );
             <th>ID</th>
             <th>Rubriek</th>
             <th>Omschrijving</th>
-            <th>Actie</th>
+            <th>Aanpassen</th>
+            <th>Verwijderen</th>
         </tr>
 		<?php
 		while ( $value = ( $row->fetch() ) ) {
@@ -38,7 +39,8 @@ $row = $pdo->query( "SELECT * FROM rubrieken" );
                 <td><?= $value['id']; ?></td>
                 <td><?= $value['rubriek']; ?></td>
                 <td><?= $value['omschrijving']; ?></td>
-                <?= '<td><a href="../beheer_config/delete-rubriek.php?deleteRubriek&id='. $value['id'] .'">Verwijderen</a></td>'; ?>
+                <td><a href="rubriek-aanpassen.php?id=<?= $value['id'] ?>">Aanpassen</a></td>
+                <td><a href="../beheer_config/delete-rubriek.php?deleteRubriek&id=<?= $value['id'] ?>">Verwijderen</a></td>
             </tr>
 			<?php
 		}

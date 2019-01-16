@@ -16,37 +16,43 @@ include '../beheer_config/config.php'; ?>
 <?php
 include '../includes/menu.php';
 if ( isset( $_POST['submit'] ) ) {
-//Haalt de gegevens op van het formulier
-	$rubriek      = ! empty( $_POST['rubriek'] ) ? trim( $_POST['rubriek'] ) : null;
+	//Haalt de gegevens op van het formulier
+	if ( ! empty( $_POST['rubriek'] ) ) {
+		$rubriek = $_POST['rubriek'];
+	} else {
+		$message = 'Rubriek mag niet leeg zijn!';
+	}
 	$omschrijving = ! empty( $_POST['omschrijving'] ) ? trim( $_POST['omschrijving'] ) : null;
 
-	$data = [
-		'rubriek'      => $rubriek,
-		'omschrijving' => $omschrijving,
-	];
+	if ( ! isset( $message ) ) {
+		$data = [
+			'rubriek'      => $rubriek,
+			'omschrijving' => $omschrijving,
+		];
 
-	//Maakt een SQL query om te checken of de rubriek nog niet bestaat
-	$sql  = "SELECT COUNT( rubriek ) AS num FROM rubrieken WHERE rubriek = :rubriek";
-	$stmt = $pdo->prepare( $sql );
-
-	//Pakt de gebruikersnaam
-	$stmt->bindValue( ':rubriek', $rubriek );
-
-	//Execute.
-	$stmt->execute();
-
-	//Fetch de rij.
-	$row = $stmt->fetch( PDO::FETCH_ASSOC );
-
-	//Controleert of de rubriek al bestaat.
-	if ( $row['num'] > 0 ) {
-		$message = 'Rubriek bestaat al...';
-	} else {
-		$sql  = "INSERT INTO rubrieken (rubriek, omschrijving) VALUES (:rubriek, :omschrijving)";
+		//Maakt een SQL query om te checken of de rubriek nog niet bestaat
+		$sql  = "SELECT COUNT( rubriek ) AS num FROM rubrieken WHERE rubriek = :rubriek";
 		$stmt = $pdo->prepare( $sql );
-		$stmt->execute( $data );
 
-		header( 'Location: index.php?succes=true' );
+		//Pakt de gebruikersnaam
+		$stmt->bindValue( ':rubriek', $rubriek );
+
+		//Execute.
+		$stmt->execute();
+
+		//Fetch de rij.
+		$row = $stmt->fetch( PDO::FETCH_ASSOC );
+
+		//Controleert of de rubriek al bestaat.
+		if ( $row['num'] > 0 ) {
+			$message = 'Rubriek bestaat al...';
+		} else {
+			$sql  = "INSERT INTO rubrieken (rubriek, omschrijving) VALUES (:rubriek, :omschrijving)";
+			$stmt = $pdo->prepare( $sql );
+			$stmt->execute( $data );
+
+			header( 'Location: index.php?succes=true' );
+		}
 	}
 }
 ?>

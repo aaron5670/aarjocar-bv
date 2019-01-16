@@ -1,6 +1,15 @@
-<?php include '../../config/config.php';
+<?php
+include '../../config/config.php';
 require_once '../../config/connect.php';
-include '../beheer_config/config.php'; ?>
+include '../beheer_config/config.php';
+
+if ( isset( $_GET['id'] ) ) {
+	$_SESSION['id'] = $_GET['id'];
+	$id             = $_SESSION['id'];
+} else {
+	header( 'location: index.php' );
+}
+?>
 
 <!DOCTYPE html>
 <html lang="nl">
@@ -16,54 +25,44 @@ include '../beheer_config/config.php'; ?>
 <?php
 include '../includes/menu.php';
 if ( isset( $_POST['submit'] ) ) {
-//Haalt de gegevens op van het formulier
-	$rubriek      = ! empty( $_POST['rubriek'] ) ? trim( $_POST['rubriek'] ) : null;
+	//Haalt de gegevens op van het formulier
+	if ( ! empty( $_POST['rubriek'] ) ) {
+		$rubriek = $_POST['rubriek'];
+	} else {
+		$message = 'Rubriek mag niet leeg zijn!';
+	}
 	$omschrijving = ! empty( $_POST['omschrijving'] ) ? trim( $_POST['omschrijving'] ) : null;
+	$id           = $_SESSION['id'];
 
 	$data = [
 		'rubriek'      => $rubriek,
 		'omschrijving' => $omschrijving,
+		'id'           => $id
 	];
 
-	//Maakt een SQL query om te checken of de rubriek nog niet bestaat
-	$sql  = "SELECT COUNT( rubriek ) AS num FROM rubrieken WHERE rubriek = :rubriek";
+	// Update statement
+	$sql  = "UPDATE rubrieken SET rubriek=:rubriek, omschrijving=:omschrijving WHERE id = :id";
 	$stmt = $pdo->prepare( $sql );
+	$stmt->execute( $data );
 
-	//Pakt de gebruikersnaam
-	$stmt->bindValue( ':rubriek', $rubriek );
-
-	//Execute.
-	$stmt->execute();
-
-	//Fetch de rij.
-	$row = $stmt->fetch( PDO::FETCH_ASSOC );
-
-	//Controleert of de rubriek al bestaat.
-	if ( $row['num'] > 0 ) {
-		$message = 'Rubriek bestaat al...';
-	} else {
-		$sql  = "INSERT INTO rubrieken (rubriek, omschrijving) VALUES (:rubriek, :omschrijving)";
-		$stmt = $pdo->prepare( $sql );
-		$stmt->execute( $data );
-
-		header( 'Location: index.php?succes=true' );
-	}
+	header( 'Location: index.php?id=' . $id . '&succes=true' );
 }
 ?>
+
 <div class="formulier-beheerpaneel-videos">
     <h1>Rubriek toevoegen</h1>
-	<?php
-	if ( isset( $message ) ) {
-		echo '<p>' . $message . '</p>';
-	}
-	?>
-    <form action="rubriek-toevoegen.php" method="post">
+    <form action="rubriek-aanpassen.php" method="post">
+		<?php
+		$stmt = $pdo->prepare( "SELECT * FROM rubrieken WHERE id=:id" );
+		$stmt->execute( [ 'id' => $id ] );
+		$value = $stmt->fetch();
+		?>
         <div class="formulier-videos">
             <label for="rubriek">Rubrieknaam</label>
-            <input type="text" id="rubriek" name="rubriek">
+            <input type="text" id="rubriek" name="rubriek" value="<?= $value['rubriek'] ?>">
 
             <label for="omschrijving">Rubriek omschrijving</label>
-            <textarea id="omschrijving" name="omschrijving"></textarea>
+            <textarea id="omschrijving" name="omschrijving"><?= $value['omschrijving'] ?></textarea>
 
             <input type="submit" name="submit" value="Toevoegen">
         </div>
