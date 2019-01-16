@@ -24,10 +24,10 @@ require_once 'config/connect.php';
 				if ( isset( $_POST['submit'] ) ) {
 					$data = [
 						'categorie' => $_POST['categorie'],
-						//'zoekwoord'    => $_POST['zoekwoord']
+						'zoekwoord' => '%' . $_POST['zoekwoord'] . '%'
 					];
 
-					$sql  = "SELECT * FROM page_iframe WHERE categorie = :categorie AND titel LIKE '%%'";
+					$sql  = "SELECT * FROM page_iframe WHERE categorie = :categorie AND titel LIKE :zoekwoord";
 					$stmt = $pdo->prepare( $sql );
 					$stmt->execute( $data );
 				} else {
