@@ -15,22 +15,30 @@ include '../beheer_config/config.php';
 <body>
 <?php include '../includes/menu.php' ?>
 <?php
-$row = $pdo->query("SELECT * FROM rubrieken");
+$row = $pdo->query( "SELECT * FROM rubrieken" );
 ?>
 <div class="gebruiker-tabel">
+    <a href="toevoegen.php">Rubriek toevoegen</a>
+	<?php
+	if ( isset( $_GET['succes'] ) == true ) {
+		echo '<p>Rubriek succesvol toegevoegd</p>';
+	}
+	?>
     <table>
         <tr>
             <th>ID</th>
             <th>Rubriek</th>
             <th>Omschrijving</th>
+            <th>Actie</th>
         </tr>
 		<?php
-		while ($value = ($row->fetch())) {
+		while ( $value = ( $row->fetch() ) ) {
 			?>
             <tr>
                 <td><?= $value['id']; ?></td>
                 <td><?= $value['rubriek']; ?></td>
                 <td><?= $value['omschrijving']; ?></td>
+                <?= '<td><a href="../beheer_config/delete-rubriek.php?deleteRubriek&id='. $value['id'] .'">Verwijderen</a></td>'; ?>
             </tr>
 			<?php
 		}
