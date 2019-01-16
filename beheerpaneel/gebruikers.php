@@ -13,7 +13,7 @@ include 'beheer_config/config.php';
     <link rel="shortcut icon" type="image/x-icon" href="<?= $url; ?>favicon.ico">
 </head>
 <body>
-<?php include 'menu/menu.php' ?>
+<?php include 'includes/menu.php' ?>
 <?php
 $row = $pdo->query("SELECT * FROM users");
 ?>
@@ -40,7 +40,7 @@ $row = $pdo->query("SELECT * FROM users");
                     if ($value['user_role'] == 'admin') {
                         echo '<a href="beheer_config/changerole.php?makeUser&id='. $value['id'] .'">Maak User</a>';
                     } else {
-                        echo '<a href="beheer_config/changerole.php?makeUser&id='. $value['id'] .'">Maak Admin</a>';
+                        echo '<a href="beheer_config/changerole.php?makeAdmin&id='. $value['id'] .'">Maak Admin</a>';
                     }
                     ?>
                 </td>

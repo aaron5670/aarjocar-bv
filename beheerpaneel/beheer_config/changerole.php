@@ -5,12 +5,12 @@ require_once '../../config/connect.php';
 
 if ( isset( $_GET['makeAdmin'] ) && isset( $_GET['id'] ) ) {
 	$id = $_GET['id'];
-
 	$pdo->query( "UPDATE users SET user_role = 'admin' WHERE id = $id" );
-} elseif ( isset( $_GET['makeUser'] ) && isset( $_GET['id'] ) ) {
-	$id = $_GET['id'];
-
-	$pdo->query( "UPDATE users SET user_role = 'user' WHERE id = $id" );
-} else {
-	eader( 'Location: ' . WEBSITE_URL );
+	header( 'Location: ' . WEBSITE_URL . 'beheerpaneel/gebruikers.php' );
 }
+if ( isset( $_GET['makeUser'] ) && isset( $_GET['id'] ) ) {
+	$id = $_GET['id'];
+	$pdo->query( "UPDATE users SET user_role = 'user' WHERE id = $id" );
+	header( 'Location: ' . WEBSITE_URL . 'beheerpaneel/gebruikers.php' );
+}
+
