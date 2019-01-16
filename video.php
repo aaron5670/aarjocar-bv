@@ -1,23 +1,52 @@
 <?php include 'includes/header.php';
-require_once 'config/connect.php'; ?>
+require_once 'config/connect.php';
+?>
+
     <main class="sectie-main">
         <div class="sectie-inner">
+
+            <form action="" method="post">
+                <label class="filter-menu-label" for="filter">Filter hier de filmpjes</label>
+                <select id="categorie" name="categorie" class="filter-menu">
+                    <option value=""></option>
+                    <?php $stmt = $pdo->query("SELECT * FROM categorieen"); ?>
+                    <?php while ($valuefilter = ($stmt->fetch())) { ?>
+                        <option value="<?= $valuefilter['categorie']; ?>"><?= $valuefilter['categorie']; ?></option>
+                    <?php } ?>
+                </select>
+                <input class="filter-menu" type="submit" name="submit" value="filteren">
+            </form>
             <div class="informatie-videos-container">
-                <!--                --><?php //$row = $pdo->query("SELECT * FROM page_iframe");
-                //                while ($value = ($row->fetch())) { ?>
-                <div class="informatie-videos">
-                    <h1>Hoe werkt de motor van een auto?</h1>
-                    <p>
-                        In deze video zul je een tutorial zien van hoe de motor van een auto werkt. Dit laten ze in
-                        deze
-                        video zien aan de hand van een geanimeerd filmpje
-                    </p>
-                    <iframe height="315" src="https://www.youtube-nocookie.com/embed/zA_19bHxEYg?start=1"
-                            allowfullscreen></iframe>
-                </div>
-                <!--                --><?php //} ?>
-
+                <?php
+                if (isset($_POST['submit'])) {
+                    $stmt = $pdo->prepare("select * from page_iframe WEHRE categorie = ?");
+                    $stmt->execute([$_GET['categorie']]);
+                    while ($value = ($stmt->fetch())) {
+                        ?>
+                        <div class="informatie-videos">
+                            <h1><?= $value['titel']; ?></h1>
+                            <p>
+                                <?= $value['omschrijving']; ?>
+                            </p>
+                            <iframe height="315" src="<?= $value['iframe_url']; ?>"
+                                    allowfullscreen></iframe>
+                        </div>
+                        <?php
+                    }
+                } else {
+                    $stmt = $pdo->query("SELECT * FROM page_iframe");
+                    while ($value = ($stmt->fetch())) {
+                        ?>
+                        <div class="informatie-videos">
+                            <h1><?= $value['titel']; ?></h1>
+                            <p>
+                                <?= $value['omschrijving']; ?>
+                            </p>
+                            <iframe height="315" src="<?= $value['iframe_url']; ?>"
+                                    allowfullscreen></iframe>
+                        </div>
+                    <?php }
+                } ?>
             </div>
-
     </main>
 <?php include 'includes/footer.php' ?>
