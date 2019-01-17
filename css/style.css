@@ -483,7 +483,13 @@ a {
     padding: 0.5em 0.5em;
     border-right: solid 1px #d9d9d9;
 }
+.filter-menu-label-forum {
+    position: relative;
+    float: left;
+    width: 50%;
+    z-index: 10;
 
+}
 .filter-menu-label {
     position: relative;
     float: left;
@@ -495,7 +501,7 @@ a {
 .filter-menu-submit {
     position: relative;
     float: left;
-    width: 51%;
+    width: 48%;
     z-index: 10;
     padding: 15px;
     color: white;
@@ -513,6 +519,28 @@ a {
     width: 50%;
 }
 
+.container-zoeken-opties-forum {
+    position: relative;
+    float: left;
+    width: 100%;
+}
+.opvul-filter-knop{
+    position: relative;
+    float: left;
+    width: 100%;
+}
+.container-zoeken-opties-forum > input{
+    color: #000;
+    float: left;
+    width: 48%;
+    border: 0 solid;
+    margin-bottom: 10px;
+    line-height: normal !important;
+    padding: 15px;
+    background-color: #F0F0F0;
+    margin-right: 2%;
+    margin-top: 25px;
+}
 .filter-menu-label > h2 {
     font-size: 22px;
     font-weight: normal;
@@ -549,6 +577,13 @@ a {
     margin-bottom: 10px;
 }
 
+.filter-menu-forum {
+    position: relative;
+    float: left;
+    width: 50%;
+    z-index: 10;
+    margin-bottom: 10px;
+}
 footer {
     z-index: 10;
 }
@@ -565,7 +600,17 @@ footer {
     padding: 25px 5% 25px 0;
     float: left;
 }
-
+.container-zoeken-opties-forum > select{
+    color: #000;
+    float: left;
+    width: 50%;
+    border: 0 solid;
+    margin-bottom: 10px;
+    line-height: normal !important;
+    padding: 15px;
+    background-color: #F0F0F0;
+    margin-top: 25px;
+}
 .omschrijving {
     position: relative;
     float: left;

@@ -2,19 +2,19 @@
 require_once '../config/connect.php';
 include '../includes/header.php';
 
-if ( isset( $_GET['id'] ) ) {
-	$id = $_GET['id'];
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
 } else {
-	//header( 'location: index.php' );
+    //header( 'location: index.php' );
     $id = NULL;
 }
 $rubriekdata = [
-	'id' => $id,
+    'id' => $id,
 ];
 
-$sql  = 'SELECT * FROM rubrieken WHERE id = :id';
-$stmt = $pdo->prepare( $sql );
-$stmt->execute( $rubriekdata );
+$sql = 'SELECT * FROM rubrieken WHERE id = :id';
+$stmt = $pdo->prepare($sql);
+$stmt->execute($rubriekdata);
 $rubriek = $stmt->fetch();
 ?>
     <main class="sectie-main">
@@ -22,26 +22,28 @@ $rubriek = $stmt->fetch();
             <div class="content-forum-tekst">
                 <h1><?= $rubriek['rubriek'] ?></h1>
                 <p>
-					<?= $rubriek['omschrijving'] ?>
+                    <?= $rubriek['omschrijving'] ?>
                 </p>
-				<?php
-				if ( isset( $_SESSION['user_id'] ) ) {
-					echo '<a href="post-aanmaken.php?id=' . $rubriek['id'] . '">Post toevoegen</a>';
-				}
-				?>
+                <?php
+                if (isset($_SESSION['user_id'])) {
+                    echo '<a href="post-aanmaken.php?id=' . $rubriek['id'] . '">Post toevoegen</a>';
+                }
+                ?>
             </div>
 
-            <form class="container-zoeken-opties" action="rubriek.php" method="post">
-                <label for="zoekwoord" class="filter-menu-label"><h2>Zoeken op trefwoord</h2></label>
-                <input type="text" class="filter-menu" name="zoekwoord" id="zoekwoord" placeholder="Zoek hier">
-                <label for="orderen" class="filter-menu-label"><h2>Sorteren</h2></label>
+            <form class="container-zoeken-opties-forum" action="rubriek.php" method="post">
 
-                <select id="orderen" name="orderen" class="filter-menu">
+                <label for="zoekwoord" class="filter-menu-label-forum"><h2>Zoeken op trefwoord</h2></label>
+                <label for="orderen" class="filter-menu-label-forum"><h2>Sorteren</h2></label>
+                <input type="text" class="filter-menu-forum" name="zoekwoord" id="zoekwoord" placeholder="Zoek hier">
+
+                <select id="orderen" name="orderen" class="filter-menu-forum">
                     <option value="ASC">Oudste</option>
                     <option value="DESC">Nieuwste</option>
                 </select>
-
-                <input class="filter-menu-submit" type="submit" name="submit" value="filteren">
+                <div class="opvul-filter-knop">
+                    <input class="filter-menu-submit" type="submit" name="submit" value="filteren">
+                </div>
             </form>
 
             <div class="table-container" role="table" aria-label="Destinations">
@@ -49,28 +51,28 @@ $rubriek = $stmt->fetch();
                     <div class="flex-row-vervolg-forum first">Posts</div>
                     <div class="flex-row-vervolg-forum">Geposts op</div>
                 </div>
-				<?php
-				if ( isset( $_POST['submit'] ) ) {
-					$data    = [
-						'zoekwoord' => '%' . $_POST['zoekwoord'] . '%',
-					];
-					$orderen = $_POST['orderen'];
+                <?php
+                if (isset($_POST['submit'])) {
+                    $data = [
+                        'zoekwoord' => '%' . $_POST['zoekwoord'] . '%',
+                    ];
+                    $orderen = $_POST['orderen'];
 
-					$sql  = "SELECT * FROM posts WHERE post_titel LIKE :zoekwoord ORDER BY gemaakt_op $orderen";
-					$stmt = $pdo->prepare( $sql );
-					$stmt->execute( $data );
-				} else {
-					$postdata = [
-						'id' => $id
-					];
+                    $sql = "SELECT * FROM posts WHERE post_titel LIKE :zoekwoord ORDER BY gemaakt_op $orderen";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute($data);
+                } else {
+                    $postdata = [
+                        'id' => $id
+                    ];
 
-					$sql  = 'SELECT * FROM posts WHERE rubriek = :id';
-					$stmt = $pdo->prepare( $sql );
-					$stmt->execute( $rubriekdata );
-				}
+                    $sql = 'SELECT * FROM posts WHERE rubriek = :id';
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute($rubriekdata);
+                }
 
-				while ( $post = $stmt->fetch() ) {
-					?>
+                while ($post = $stmt->fetch()) {
+                    ?>
                     <div class="flex-table row" role="rowgroup">
                         <div class="flex-row-vervolg-forum first">
                             <a href="post.php?id=<?= $post['id'] ?>">
@@ -78,7 +80,7 @@ $rubriek = $stmt->fetch();
                         </div>
                         <div class="flex-row-vervolg-forum"><?= $post['gemaakt_op'] ?></div>
                     </div>
-				<?php } ?>
+                <?php } ?>
             </div>
 
         </div>
