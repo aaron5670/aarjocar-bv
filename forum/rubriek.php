@@ -33,14 +33,15 @@ $rubriek = $stmt->fetch();
 
             <form class="container-zoeken-opties-forum" action="rubriek.php" method="post">
 
-                <label for="zoekwoord" class="filter-menu-label-forum"><h2>Zoeken op trefwoord</h2></label>
-                <label for="orderen" class="filter-menu-label-forum"><h2>Sorteren</h2></label>
+                <h2><label for="zoekwoord" class="filter-menu-label-forum">Zoeken op trefwoord</label></h2>
                 <input type="text" class="filter-menu-forum" name="zoekwoord" id="zoekwoord" placeholder="Zoek hier">
 
+                <h2><label for="orderen" class="filter-menu-label-forum">Sorteren</label></h2>
                 <select id="orderen" name="orderen" class="filter-menu-forum">
                     <option value="ASC">Oudste</option>
                     <option value="DESC">Nieuwste</option>
                 </select>
+
                 <div class="opvul-filter-knop">
                     <input class="filter-menu-submit" type="submit" name="submit" value="filteren">
                 </div>
