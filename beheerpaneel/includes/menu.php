@@ -7,7 +7,7 @@
             </a>
         </li>
         <li>
-            <a href="<?= $url; ?>beheerpaneel/videos.php">
+            <a href="<?= $url; ?>beheerpaneel/videos/index.php">
                 Video's
             </a>
         </li>

@@ -19,11 +19,11 @@ if (isset($_POST['submit'])) {
         'tekst' => $_POST['tekst']
     ];
 // update page_content query
-    $sql = "UPDATE page_content SET titel = :titel, tekst = :tekst WHERE pageId = 1";
+    $sql = "UPDATE content SET titel = :titel, tekst = :tekst WHERE page_id = 1";
     $stmt = $pdo->prepare($sql);
     $stmt->execute($data);
 }
-$row = $pdo->query("SELECT * FROM page_content WHERE pageId = 1");
+$row = $pdo->query("SELECT * FROM content WHERE page_id = 1");
 $value = ($row->fetch());
 ?>
 <div class="formulier-beheerpaneel">
