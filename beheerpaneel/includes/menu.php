@@ -2,7 +2,7 @@
 <div id="menulinks">
     <ul id="cms_menu">
         <li>
-            <a href="<?= $url; ?>beheerpaneel/home.php">
+            <a href="<?= $url; ?>beheerpaneel/index.php">
                 Home
             </a>
         </li>
