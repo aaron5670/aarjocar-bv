@@ -13,11 +13,11 @@ if (strpos($_SERVER['REQUEST_URI'], 'submenu_paginas') == true) {
 ?>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AARJO Car BV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" itemprop="content" property="content">
     <link rel="stylesheet" type="text/css" href="<?= $url; ?>css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="<?= $url; ?>favicon.ico">
+    <title>AARJO Car BV</title>
 </head>
 <header class="sectie-main" id="header-main">
     <div class="sectie-inner">

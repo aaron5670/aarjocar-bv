@@ -1,6 +1,6 @@
 <?php include '../config/config.php';
 require_once '../config/connect.php';
-include 'beheer_config/config.php';?>
+include 'beheer_config/config.php'; ?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -14,29 +14,25 @@ include 'beheer_config/config.php';?>
 <body>
 <?php include 'includes/menu.php';
 if (isset($_POST['submit'])) {
-
-//Haalt de gegevens op van het formulier
-    $titel = !empty($_POST['titel']) ? trim($_POST['titel']) : null;
-    $tekst = !empty($_POST['tekst']) ? trim($_POST['tekst']) : null;
-    $tekst = base64_encode($tekst);
-
+    $data = [
+        'titel' => $_POST['titel'],
+        'tekst' => $_POST['tekst']
+    ];
 // update page_content query
-    $pdo->query("UPDATE page_content SET titel = '$titel', tekst = '$tekst' WHERE pageId = 1");
+    $sql = "UPDATE page_content SET titel = :titel, tekst = :tekst WHERE pageId = 1";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($data);
 }
-
 $row = $pdo->query("SELECT * FROM page_content WHERE pageId = 1");
 $value = ($row->fetch());
-
 ?>
-
-
 <div class="formulier-beheerpaneel">
     <form action="home.php" method="post">
         <label for="titel">Titel</label>
         <input type="text" id="titel" name="titel" value="<?= $value['titel']; ?>"><br>
 
         <label for="tekst">Tekst</label>
-        <textarea id="tekst" name="tekst"><?= base64_decode($value['tekst']); ?></textarea><br>
+        <textarea id="tekst" name="tekst"><?= $value['tekst']; ?></textarea><br>
 
         <input type="submit" name="submit" value="Updaten">
     </form>

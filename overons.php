@@ -8,7 +8,7 @@ require_once 'config/connect.php'; ?>
                 <div class="informatie-jorisaaron">
                     <h1><?= $value['titel']; ?></h1>
                     <p>
-                        <?= base64_decode($value['tekst']); ?>
+                        <?= $value['tekst']; ?>
                     </p>
                     <img src="images/joris.jpg" alt>
                 </div>
@@ -17,7 +17,7 @@ require_once 'config/connect.php'; ?>
                     $value = ($row->fetch()) ?>
                     <h1><?= $value['titel']; ?></h1>
                     <p>
-                        <?= base64_decode($value['tekst']); ?>
+                        <?= $value['tekst']; ?>
                     </p>
                     <img src="images/aaron.jpg" alt>
                 </div>
