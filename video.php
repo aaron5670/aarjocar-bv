@@ -31,16 +31,14 @@ require_once 'config/connect.php';
 					$data = [
 						'categorie' => $_POST['categorie'],
 						'zoekwoord' => '%' . $_POST['zoekwoord'] . '%',
-						//'orderen'   => $_POST['orderen']
+						'orderen'   => $_POST['orderen']
 					];
 
-					print_r( $data );
-
-					$sql  = "SELECT * FROM page_iframe WHERE categorie = :categorie AND titel LIKE :zoekwoord ORDER BY publicatiedatum ASC";
+					$sql  = "SELECT * FROM page_iframe WHERE categorie = :categorie AND titel LIKE :zoekwoord ORDER BY publicatiedatum :orderen";
 					$stmt = $pdo->prepare( $sql );
 					$stmt->execute( $data );
 				} else {
-					$stmt = $pdo->query( "SELECT * FROM page_iframe WHERE categorie = 'Auto_componenten' AND titel LIKE '%%' ORDER BY publicatiedatum ASC" );
+					$stmt = $pdo->query( "SELECT * FROM page_iframe WHERE categorie = 'Auto_componenten' AND titel LIKE '%%' ORDER BY publicatiedatum DESC" );
 				}
 				while ( $value = ( $stmt->fetch() ) ) {
 					?>
