@@ -1,5 +1,5 @@
-<?php include '../includes/header.php';
-require_once '../config/connect.php';
+<?php include 'includes/header.php';
+require_once 'config/connect.php';
 ?>
     <main class="sectie-main">
         <div class="sectie-inner">
@@ -26,4 +26,4 @@ require_once '../config/connect.php';
             </div>
         </div>
     </main>
-<?php include '../includes/footer.php' ?>
+<?php include 'includes/footer.php' ?>

@@ -1,10 +1,10 @@
 <?php
-require_once '../config/connect.php';
-include '../includes/header.php';
+require_once 'config/connect.php';
+include 'includes/header.php';
 if ( isset( $_GET['id'] ) ) {
 	$id = $_GET['id'];
 } else {
-	header( 'location: index.php' );
+	header( 'location: forum.php' );
 }
 $data = [
 	'id' => $id,
@@ -21,7 +21,7 @@ $value = $stmt->fetch();
                 <h1><?= $value['titel']; ?></h1>
                 <div class="video">
 
-                    <iframe height="70%" src="<?= $value['iframe_url']; ?>"
+                    <iframe src="<?= $value['iframe_url']; ?>"
                             allowfullscreen></iframe>
                 </div>
                 <div class="omschrijving">
@@ -35,4 +35,4 @@ $value = $stmt->fetch();
             </div>
         </div>
     </div>
-<?php include '../includes/footer.php'; ?>
+<?php include 'includes/footer.php'; ?>

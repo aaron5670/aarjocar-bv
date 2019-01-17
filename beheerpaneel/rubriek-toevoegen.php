@@ -1,6 +1,6 @@
-<?php include '../../config/config.php';
-require_once '../../config/connect.php';
-include '../beheer_config/config.php'; ?>
+<?php include '../config/config.php';
+require_once '../config/connect.php';
+include 'beheer_config/config.php'; ?>
 
 <!DOCTYPE html>
 <html lang="nl">
@@ -8,13 +8,13 @@ include '../beheer_config/config.php'; ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AARJO Car BV</title>
-    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="<?= $url; ?>favicon.ico">
 </head>
 <body>
 <?php
-include '../includes/menu.php';
+include 'includes/menu.php';
 if ( isset( $_POST['submit'] ) ) {
 	//Haalt de gegevens op van het formulier
 	if ( ! empty( $_POST['rubriek'] ) ) {
@@ -51,7 +51,7 @@ if ( isset( $_POST['submit'] ) ) {
 			$stmt = $pdo->prepare( $sql );
 			$stmt->execute( $data );
 
-			header( 'Location: index.php?succes=true' );
+			header( 'Location: forum.php?succes=true' );
 		}
 	}
 }

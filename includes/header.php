@@ -12,23 +12,23 @@ if ( strpos( $_SERVER['REQUEST_URI'], 'forum/' ) == true ) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="<?= $url; ?>css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="<?= $url; ?>favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <title>AARJO Car BV</title>
 </head>
 <header class="sectie-main" id="header-main">
     <div class="sectie-inner">
         <div class="logo">
-            <a href="<?= $url; ?>index.php">
-                <img src="<?= $url; ?>images/logo.png" alt>
+            <a href="index.php">
+                <img src="images/logo.png" alt>
             </a>
         </div>
 		<?php
 		if ( isset( $_SESSION['user_id'] ) ) {
 			?>
             <div class="inloggen">
-                <a href="<?= $url; ?>logout.php">
+                <a href="logout.php">
                     Uitloggen
                 </a>
                 <p>Welkom <?= $_SESSION['firstname'] ?></p>
@@ -37,7 +37,7 @@ if ( strpos( $_SERVER['REQUEST_URI'], 'forum/' ) == true ) {
 		} else {
 			?>
             <div class="inloggen">
-                <a href="<?= $url; ?>inloggen.php">
+                <a href="inloggen.php">
                     Inloggen
                 </a>
             </div>
@@ -48,22 +48,22 @@ if ( strpos( $_SERVER['REQUEST_URI'], 'forum/' ) == true ) {
     <div class="sectie-inner">
         <ul id="nav">
             <li>
-                <a href="<?= $url; ?>index.php">
+                <a href="index.php">
                     Home
                 </a>
             </li>
             <li>
-                <a href="<?= $url; ?>video/index.php">
+                <a href="video.php">
                     Video's
                 </a>
             </li>
             <li>
-                <a href="<?= $url; ?>forum/index.php">
+                <a href="forum.php">
                     Forum
                 </a>
             </li>
             <li>
-                <a href="<?= $url; ?>overons.php">
+                <a href="overons.php">
                     Over ons
                 </a>
             </li>
@@ -71,7 +71,7 @@ if ( strpos( $_SERVER['REQUEST_URI'], 'forum/' ) == true ) {
     </div>
 </header>
 <div class="container-header-foto">
-    <img class="hoofdfoto" src="<?= $url; ?>images/hoofdfoto-3.png" alt>
+    <img class="hoofdfoto" src="images/hoofdfoto-3.png" alt>
     <div class="hoofdfoto-dark-overlay"></div>
     <div class="schuin-balk-container">
         <div class="schuin-balk-links"></div>

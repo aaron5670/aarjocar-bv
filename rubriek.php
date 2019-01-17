@@ -1,11 +1,11 @@
 <?php
-require_once '../config/connect.php';
-include '../includes/header.php';
+require_once 'config/connect.php';
+include 'includes/header.php';
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 } else {
-    //header( 'location: index.php' );
+    //header( 'location: forum.php' );
     $id = NULL;
 }
 $rubriekdata = [
@@ -33,10 +33,11 @@ $rubriek = $stmt->fetch();
 
             <form class="container-zoeken-opties-forum" action="rubriek.php" method="post">
 
-                <h2><label for="zoekwoord" class="filter-menu-label-forum">Zoeken op trefwoord</label></h2>
+                <label for="zoekwoord" class="filter-menu-label-forum">Zoeken op trefwoord</label>
+                <label for="orderen" class="filter-menu-label-forum">Sorteren</label>
                 <input type="text" class="filter-menu-forum" name="zoekwoord" id="zoekwoord" placeholder="Zoek hier">
 
-                <h2><label for="orderen" class="filter-menu-label-forum">Sorteren</label></h2>
+
                 <select id="orderen" name="orderen" class="filter-menu-forum">
                     <option value="ASC">Oudste</option>
                     <option value="DESC">Nieuwste</option>
@@ -86,4 +87,4 @@ $rubriek = $stmt->fetch();
 
         </div>
     </main>
-<?php include '../includes/footer.php' ?>
+<?php include 'includes/footer.php' ?>

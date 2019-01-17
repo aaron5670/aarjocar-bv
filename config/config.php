@@ -1,4 +1,4 @@
 <?php
 session_start();
 
-$url = 'http://aarjocar-bv.test/';
+//$url = 'localhost/aarjocar-bv.test';

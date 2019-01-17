@@ -1,11 +1,11 @@
 <?php
-require_once '../config/connect.php';
-include '../includes/header.php';
+require_once 'config/connect.php';
+include 'includes/header.php';
 
 if ( isset( $_GET['id'] ) ) {
 	$id = $_GET['id'];
 } else {
-	header( 'location: index.php' );
+	header( 'location: forum.php' );
 }
 $data = [
 	'id' => $id,
@@ -48,4 +48,4 @@ $post = $stmt->fetch();
             </div>
         </div>
     </main>
-<?php include '../includes/footer.php' ?>
+<?php include 'includes/footer.php' ?>

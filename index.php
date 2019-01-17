@@ -1,4 +1,3 @@
-
 <?php include 'includes/header.php' ?>
 <main class="sectie-main">
     <div class="sectie-inner">

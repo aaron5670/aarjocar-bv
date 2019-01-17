@@ -9,7 +9,7 @@ include 'beheer_config/config.php'; ?>
     <title>AARJO Car BV</title>
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="<?= $url; ?>favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
 </head>
 <body>
 <?php include 'includes/menu.php';

@@ -12,5 +12,5 @@ if ( isset( $_GET['deleteRubriek'] ) && isset( $_GET['id'] ) ) {
 	$stmt = $pdo->prepare( $sql );
 	$stmt->execute( $data );
 
-	header( 'Location: ' . WEBSITE_URL . 'beheerpaneel/forum/index.php' );
+	header( 'Location: ' . WEBSITE_URL . 'beheerpaneel/forum/forum.php' );
 }

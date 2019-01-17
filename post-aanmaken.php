@@ -1,12 +1,12 @@
 <?php
-require_once '../config/connect.php';
-include '../includes/header.php';
+require_once 'config/connect.php';
+include 'includes/header.php';
 
 if ( isset( $_GET['id'] ) && isset($_SESSION['user_id']) ) {
 	$_SESSION['id'] = $_GET['id'];
 	$id             = $_SESSION['id'];
 } else {
-	header( 'location: index.php' );
+	header( 'location: forum.php' );
 }
 
 $rubriekdata = [
@@ -44,7 +44,7 @@ if ( isset( $_POST['submit'] ) ) {
 		$stmt = $pdo->prepare( $sql );
 		$stmt->execute( $data );
 
-		//header( 'Location: index.php?succes=true' );
+		//header( 'Location: forum.php?succes=true' );
 	}
 }
 ?>
@@ -70,4 +70,4 @@ if ( isset( $_POST['submit'] ) ) {
             </div>
         </div>
     </main>
-<?php include '../includes/footer.php' ?>
+<?php include 'includes/footer.php' ?>

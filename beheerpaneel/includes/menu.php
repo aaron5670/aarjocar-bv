@@ -2,31 +2,31 @@
 <div id="menulinks">
     <ul id="cms_menu">
         <li>
-            <a href="<?= $url; ?>beheerpaneel/index.php">
+            <a href="../beheerpaneel/index.php">
                 Home
             </a>
         </li>
         <li>
-            <a href="<?= $url; ?>beheerpaneel/videos/index.php">
+            <a href="../beheerpaneel/video-beheer.php">
                 Video's
             </a>
         </li>
         <li>
-            <a href="<?= $url; ?>beheerpaneel/forum/index.php">
+            <a href="../beheerpaneel/forum-beheer.php">
                 Forum
             </a>
         </li> <li>
-            <a href="<?= $url; ?>beheerpaneel/forum_posts.php">
+            <a href="../beheerpaneel/forum_posts.php">
                 Forum posts
             </a>
         </li>
         <li>
-            <a href="<?= $url; ?>beheerpaneel/overons/index.php">
+            <a href="../beheerpaneel/over-ons-beheer.php">
                 Over ons
             </a>
         </li>
         <li>
-            <a href="<?= $url; ?>beheerpaneel/gebruikers.php">
+            <a href="../beheerpaneel/gebruikers.php">
                 Gebruikers
             </a>
         </li>
