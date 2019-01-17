@@ -23,8 +23,11 @@ $rubriek = $stmt->fetch();
                 <p>
 					<?= $rubriek['omschrijving'] ?>
                 </p>
-
-                <a href="post-aanmaken.php?id=<?= $rubriek['id'] ?>">Post toevoegen</a>
+				<?php
+				if ( isset( $_SESSION['user_id'] ) ) {
+					echo '<a href="post-aanmaken.php?id=' . $rubriek['id'] . '">Post toevoegen</a>';
+				}
+				?>
             </div>
 
             <div class="table-container" role="table" aria-label="Destinations">
@@ -46,7 +49,7 @@ $rubriek = $stmt->fetch();
 					?>
                     <div class="flex-table row" role="rowgroup">
                         <div class="flex-row-vervolg-forum first">
-                            <a href="discussies/prijsverschil-literprijs-benzine-vs-diesel.php">
+                            <a href="post.php?id=<?= $post['id'] ?>">
                                 <span class="forum-span-title"> <?= $post['post_titel'] ?></span></a>
                         </div>
                         <div class="flex-row-vervolg-forum"><?= $post['keer_bekeken'] ?></div>
