@@ -55,7 +55,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'submenu_paginas') == true) {
                 </a>
             </li>
             <li>
-                <a href="<?= $url; ?>video.php">
+                <a href="<?= $url; ?>video/index.php">
                     Video's
                 </a>
             </li>

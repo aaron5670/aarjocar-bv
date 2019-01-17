@@ -1,10 +1,10 @@
 <?php
-include 'includes/header.php';
-require_once 'config/connect.php';
+include '../includes/header.php';
+require_once '../config/connect.php';
 ?>
     <main class="sectie-main">
         <div class="sectie-inner">
-            <form class="container-zoeken-opties" action="video.php" method="post">
+            <form class="container-zoeken-opties" action="index.php" method="post">
                 <label class="filter-menu-label" for="categorie"><h2>Zoeken op Categorie</h2></label>
                 <select id="categorie" name="categorie" class="filter-menu">
                     <?php $stmt = $pdo->query("SELECT * FROM categorieen"); ?>
@@ -47,8 +47,8 @@ require_once 'config/connect.php';
                         <p>
                             <?= $value['omschrijving']; ?>
                         </p>
-                        <a href="video/video-vervolg.php?id=<?= $value['id'] ?>">
-                            <img src="images/videoimages/<?= $value['afbeelding']; ?>" alt="<?= $value['titel']; ?>"
+                        <a href="video-vervolg.php?id=<?= $value['id'] ?>">
+                            <img src="../images/videoimages/<?= $value['afbeelding']; ?>" alt="<?= $value['titel']; ?>"
                                  width="100% " height="300px">
                         </a>
                     </div>
@@ -58,4 +58,4 @@ require_once 'config/connect.php';
             </div>
         </div>
     </main>
-<?php include 'includes/footer.php' ?>
+<?php include '../includes/footer.php' ?>
