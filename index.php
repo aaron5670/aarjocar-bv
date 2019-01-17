@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="nl">
-<body>
+
 <?php include 'includes/header.php' ?>
 <main class="sectie-main">
     <div class="sectie-inner">
