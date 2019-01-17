@@ -17,7 +17,7 @@
             </a>
         </li>
         <li>
-            <a href="<?= $url; ?>beheerpaneel/overons.php">
+            <a href="<?= $url; ?>beheerpaneel/overons/index.php">
                 Over ons
             </a>
         </li>

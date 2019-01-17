@@ -7,7 +7,7 @@
         <div class="content-tekst">
             <?php
             require_once 'config/connect.php';
-            $stmt = $pdo->query("SELECT * FROM page_content WHERE pageId = 1");
+            $stmt = $pdo->query("SELECT * FROM content WHERE page_id = 1");
             $value = ($stmt->fetch());
             ?>
             <h1><?= $value['titel']; ?></h1>
