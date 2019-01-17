@@ -403,7 +403,7 @@ a {
 }
 
 .flex-row.first {
-    width: 60%;
+    width: 100%;
 }
 
 .flex-table:first-of-type {
