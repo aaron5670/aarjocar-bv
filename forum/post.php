@@ -43,7 +43,7 @@ $post = $stmt->fetch();
                 <form>
                     <label for="reageren"></label>
                     <textarea name="reageren" id="reageren" class="textarea-forum"></textarea>
-                    <button>Plaatsen</button>
+                    <button class="button">Plaatsen</button>
                 </form>
             </div>
         </div>

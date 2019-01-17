@@ -15,6 +15,10 @@
             <a href="<?= $url; ?>beheerpaneel/forum/index.php">
                 Forum
             </a>
+        </li> <li>
+            <a href="<?= $url; ?>beheerpaneel/forum_posts.php">
+                Forum posts
+            </a>
         </li>
         <li>
             <a href="<?= $url; ?>beheerpaneel/overons/index.php">

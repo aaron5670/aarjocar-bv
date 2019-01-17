@@ -32,10 +32,8 @@ $rubriek = $stmt->fetch();
 
             <div class="table-container" role="table" aria-label="Destinations">
                 <div class="flex-table header" role="rowgroup">
-                    <div class="flex-row-vervolg-forum first">Onderwerp</div>
-                    <div class="flex-row-vervolg-forum">Bekeken</div>
-                    <div class="flex-row-vervolg-forum">Berichten</div>
-                    <div class="flex-row-vervolg-forum">Aangemaakt op</div>
+                    <div class="flex-row-vervolg-forum first">Posts</div>
+                    <div class="flex-row-vervolg-forum">Geposts op</div>
                 </div>
 				<?php
 				$postdata = [
@@ -52,8 +50,6 @@ $rubriek = $stmt->fetch();
                             <a href="post.php?id=<?= $post['id'] ?>">
                                 <span class="forum-span-title"> <?= $post['post_titel'] ?></span></a>
                         </div>
-                        <div class="flex-row-vervolg-forum"><?= $post['keer_bekeken'] ?></div>
-                        <div class="flex-row-vervolg-forum">0</div>
                         <div class="flex-row-vervolg-forum"><?= $post['gemaakt_op'] ?></div>
                     </div>
 				<?php } ?>
