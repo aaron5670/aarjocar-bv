@@ -2,7 +2,7 @@
 require_once '../config/connect.php';
 include '../includes/header.php';
 
-if ( isset( $_GET['id'] ) ) {
+if ( isset( $_GET['id'] ) && isset($_SESSION['user_id']) ) {
 	$_SESSION['id'] = $_GET['id'];
 	$id             = $_SESSION['id'];
 } else {
