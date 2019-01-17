@@ -10,10 +10,9 @@ require_once '../config/connect.php';
             <div class="table-container" role="table" aria-label="Destinations">
                 <div class="flex-table header" role="rowgroup">
                     <div class="flex-row first">Rubrieken</div>
-                    <div class="flex-row">Posts</div>
                 </div>
 				<?php
-				$stmt = $pdo->query( "SELECT * FROM rubrieken" );
+                $stmt = $pdo->query( "SELECT * FROM rubrieken" );
 				while ( $value = $stmt->fetch() ) {
 					?>
                     <div class="flex-table row" role="rowgroup">
@@ -22,7 +21,6 @@ require_once '../config/connect.php';
                                         class="forum-span-title"> <?= $value['rubriek']; ?></span></a><br/>
 							<?= $value['omschrijving']; ?>
                         </div>
-                        <div class="flex-row">54</div>
                     </div>
 				<?php } ?>
             </div>
