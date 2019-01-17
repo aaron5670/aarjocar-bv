@@ -15,6 +15,7 @@ if ( isset( $_POST['register'] ) ) {
 	$username  = ! empty( $_POST['username'] ) ? trim( $_POST['username'] ) : null;
 
 
+
 	//Maakt een SQL query
 	$sql  = "SELECT COUNT( username ) AS num FROM users WHERE username = :username";
 	$stmt = $pdo->prepare( $sql );
@@ -44,7 +45,17 @@ if ( isset( $_POST['register'] ) ) {
 
 		if ( ! isset( $message ) ) {
 			//Insert de gegevens in de database
-			$pdo->query( "INSERT INTO users( username, password, firstname, lastname, email ) values( '$username', '$passwordHash', '$firstname', '$lastname', '$email' )" );
+			$data = [
+				'username'      => $username,
+				'password'         => $passwordHash,
+				'firstname'    => $firstname,
+				'lastname' => $lastname,
+				'email'      => $email,
+			];
+
+			$sql  = "INSERT INTO users( username, password, firstname, lastname, email ) values( :username, :password, :firstname, :lastname, :email )";
+			$stmt = $pdo->prepare( $sql );
+			$stmt->execute( $data );
 
 			//als het gelukt is
 			if ( $stmt ) {
