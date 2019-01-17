@@ -17,8 +17,8 @@ require_once '../config/connect.php';
                 <label for="orderen" class="filter-menu-label"><h2>Sorteren</h2></label>
 
                 <select id="orderen" name="orderen" class="filter-menu">
-                    <option value="ASC">Nieuwste</option>
-                    <option value="DESC">Oudste</option>
+                    <option value="ASC">Oudste</option>
+                    <option value="DESC">Nieuwste</option>
                 </select>
 
                 <input class="filter-menu-submit" type="submit" name="submit" value="filteren">
@@ -30,7 +30,6 @@ require_once '../config/connect.php';
                     $data = [
                         'categorie' => $_POST['categorie'],
                         'zoekwoord' => '%' . $_POST['zoekwoord'] . '%',
-//						'orderen'   => $_POST['orderen']
                     ];
                     $orderen = $_POST['orderen'];
 
