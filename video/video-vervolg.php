@@ -9,6 +9,7 @@ if ( isset( $_GET['id'] ) ) {
 $data = [
 	'id' => $id,
 ];
+
 $sql  = 'SELECT * FROM page_iframe WHERE id = :id';
 $stmt = $pdo->prepare( $sql );
 $stmt->execute( $data );

@@ -30,13 +30,15 @@ if (isset($_GET['succes']) == true) {
 include 'includes/menu.php';
 if (isset($_POST['submit'])) {
     //Haalt de gegevens op van het formulier
-    $titel = !empty($_POST['titel']) ? trim($_POST['titel']) : null;
-    $tekst = !empty($_POST['tekst']) ? trim($_POST['tekst']) : null;
-    $pageId = $_SESSION['pageId'];
+//    $titel = !empty($_POST['titel']) ? trim($_POST['titel']) : null;
+//    $tekst = !empty($_POST['tekst']) ? trim($_POST['tekst']) : null;
+//    $pageId = $_SESSION['pageId'];
 
     $data = [
-        'titel' => $titel,
-        'tekst' => $tekst
+        'titel' => $_POST['titel'],
+        'tekst' => $_POST['tekst'],
+        'pageId' => $_POST['pageId']
+
     ];
 
     // Update statement
@@ -64,7 +66,7 @@ if (isset($_POST['submit'])) {
             <input type="text" id="titel" name="titel" value="<?= $value['titel']; ?>"><br>
 
             <label for="tekst">Tekst</label>
-            <textarea type="text" id="tekst" name="tekst" placeholder="<?= $value['tekst']; ?>"><?= $value['tekst']; ?></textarea><br>
+            <textarea id="tekst" name="tekst" placeholder="<?= $value['tekst']; ?>"><?= $value['tekst']; ?></textarea><br>
 
             <input type="submit" name="submit" value="Updaten">
         </div>
