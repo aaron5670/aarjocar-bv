@@ -1,5 +1,5 @@
-<?php include 'includes/header.php';
-require_once 'config/connect.php';
+<?php include '../includes/header.php';
+require_once '../config/connect.php';
 ?>
     <main class="sectie-main">
         <div class="sectie-inner">
@@ -12,20 +12,20 @@ require_once 'config/connect.php';
                     <div class="flex-row first">Rubrieken</div>
                     <div class="flex-row">Posts</div>
                 </div>
-                <?php $stmt = $pdo->query("SELECT * FROM rubrieken");
-                while ($value = $stmt->fetch()) { ?>
+				<?php
+				$stmt = $pdo->query( "SELECT * FROM rubrieken" );
+				while ( $value = $stmt->fetch() ) {
+					?>
                     <div class="flex-table row" role="rowgroup">
                         <div class="flex-row first">
-                            <a href="forum/algemeen.php"><span
+                            <a href="rubriek.php?id=<?= $value['id'] ?>"><span
                                         class="forum-span-title"> <?= $value['rubriek']; ?></span></a><br/>
-                            <?= $value['omschrijving']; ?>
+							<?= $value['omschrijving']; ?>
                         </div>
                         <div class="flex-row">54</div>
                     </div>
-                <?php } ?>
-
+				<?php } ?>
             </div>
-
         </div>
     </main>
-<?php include 'includes/footer.php' ?>
+<?php include '../includes/footer.php' ?>

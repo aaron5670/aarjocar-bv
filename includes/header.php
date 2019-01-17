@@ -60,7 +60,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'submenu_paginas') == true) {
                 </a>
             </li>
             <li>
-                <a href="<?= $url; ?>forum.php">
+                <a href="<?= $url; ?>forum/index.php">
                     Forum
                 </a>
             </li>

@@ -19,7 +19,7 @@ if ( isset( $_GET['makeUser'] ) && isset( $_GET['id'] ) ) {
 		'id' => $_GET['id']
 	];
 
-	$sql  = "UPDATE users SET user_role = 'user' WHERE id = :id";
+	$sql  = "UPDATE users SET user_role = user WHERE id = :id";
 	$stmt = $pdo->prepare( $sql );
 	$stmt->execute( $data );
 
