@@ -588,6 +588,43 @@ footer {
     margin-bottom: 10px;
 }
 
+.post-toevoegen{
+    position: relative;
+    float: left;
+    width: 60%;
+    z-index: 10;
+}
+.post-label{
+    position: relative;
+    float: left;
+    width: 100%;
+}
+.post-text{
+    position: relative;
+    float: left;
+    width: 100%;
+    color: #000;
+    border: 0 solid;
+    margin-bottom: 10px;
+    line-height: normal !important;
+    padding: 15px;
+    background-color: #F0F0F0;
+}
+
+.button{
+    position: relative;
+    float: left;
+    width: 35%;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    background-color: #ff9200;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
 @media all and (max-width: 767px) {
     .flex-row {
         width: 100%;

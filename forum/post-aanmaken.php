@@ -57,19 +57,15 @@ if ( isset( $_POST['submit'] ) ) {
                 </h3>
             </div>
 
-            <div class="post-toevoegen filter-menu">
+            <div class="post-toevoegen">
                 <form action="post-aanmaken.php" method="post">
-                    <label for="posttitel">Post titel</label>
-                    <input type="text" id="posttitel" name="posttitel">
+                    <label class="post-label" for="posttitel">Post titel</label>
+                    <input class="post-text" type="text" id="posttitel" name="posttitel">
 
-                    <br/>
+                    <label class="post-label" for="omschrijving">Post omschrijving</label>
+                    <textarea class="post-text" rows="10" id="omschrijving" name="omschrijving"></textarea>
 
-                    <label for="omschrijving">Post omschrijving</label>
-                    <textarea rows="10" id="omschrijving" name="omschrijving"></textarea>
-
-                    <br/>
-
-                    <input type="submit" name="submit" value="Post plaatsen">
+                    <input class="button" type="submit" name="submit" value="Post plaatsen">
                 </form>
             </div>
         </div>
