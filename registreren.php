@@ -14,8 +14,6 @@ if ( isset( $_POST['register'] ) ) {
 	$email     = ! empty( $_POST['email'] ) ? trim( $_POST['email'] ) : null;
 	$username  = ! empty( $_POST['username'] ) ? trim( $_POST['username'] ) : null;
 
-
-
 	//Maakt een SQL query
 	$sql  = "SELECT COUNT( username ) AS num FROM users WHERE username = :username";
 	$stmt = $pdo->prepare( $sql );
