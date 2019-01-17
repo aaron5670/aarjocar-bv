@@ -2,8 +2,7 @@
 require_once '../config/connect.php';
 include '../includes/header.php';
 if (isset($_GET['id'])) {
-    $_SESSION['id'] = $_GET['id'];
-    $id = $_SESSION['id'];
+    $id = $_GET['id'];
 } else {
     header('location: index.php');
 }
